@@ -19,36 +19,34 @@ class App extends Component {
 const QUERY = gql`
 {
     allUsers {
-      edges {
-        node {
-          id
-          firstName
-          lastName
+        edges {
+          node {
+            id
+            firstName
+            lastName
+            userSkillsByUserId {
+              edges {
+                node {
+                  skillId
+                  level
+                  aspiration
+                  note
+                  instructor
+                }
+              }
+            }
+          }
         }
       }
-    }
-    allSkills {
-      edges {
-        node {
-          id
-          name
+      allSkills(orderBy: NAME_ASC) {
+        edges {
+          node {
+            id
+            name
+          }
         }
       }
-    }
-    allUserSkills {
-      edges {
-        node {
-          userId
-          skillId
-          level
-          aspiration
-          note
-          instructor
-        }
-      }
-    }
-  }
-  `;
+}`;
 
 function edgeMap(edges) {
     let map = Object();
@@ -56,25 +54,35 @@ function edgeMap(edges) {
     return map;
 }
 
+function personSkillsBySkill(person, skills) {
+    let personSkills = Object();
+    person.userSkillsByUserId.edges.forEach(({ node }) => personSkills[node.skillId] = node)
+    return skills.map(({ id, name }) => personSkills[id] || { id, name });
+}
+
 const SkillTable = graphql(QUERY)(({ data }) => {
     if (!data.allUsers) return null;
     let people = data.allUsers.edges.map(({ node }) => node);
     let skills = data.allSkills.edges.map(({ node }) => node);
-    // let people = edgeMap(data.allUsers.edges);
-    // let skills = edgeMap(data.allSkills.edges);
-    let join = data.allUserSkills.edges.map(({ node }) => node);
-    skills.sort(({ name: a }, { name: b }) => a < b ? -1 : a > b ? 1 : 0)
     people.sort(({ firstName: a }, { firstName: b }) => a < b ? -1 : a > b ? 1 : 0)
     return <table>
         <tbody>
             <tr><th />{skills.map(({ name, id }) => <th key={'skill-' + id}>{name}</th>)}</tr>
-            {people.map(person => <PersonSkillRow key={'person-' + person.id} person={person} join={join} />)}
+            {people.map(person =>
+                <PersonSkillRow key={'person-' + person.id}
+                    person={person}
+                    skills={personSkillsBySkill(person, skills)}
+                />)}
         </tbody>
     </table>
 });
 
-const PersonSkillRow = ({ person: { id, firstName, lastName }, join }) =>
-    <tr><td>{firstName} {lastName}</td></tr>;
+const PersonSkillRow = ({ person: { id: personId, firstName, lastName }, skills }) =>
+    <tr>
+        <th>{firstName} {lastName}</th>
+        {skills.map((node) =>
+            <td key={'p' + personId + 's' + node.id}> {node.level}</td>)}
+    </tr>;
 
 
 export default App;
