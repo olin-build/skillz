@@ -1,0 +1,14 @@
+{
+  "name": "skillz",
+  "description": "People skills finder",
+  "version": "0.1.0",
+  "author": "Oliver Steele <oliver.steele@olin.edu>",
+  "dependencies": {
+    "postgraphql": "^3.5.4"
+  },
+  "license": "MIT",
+  "scripts": {
+    "start": "postgraphql -c postgres://skillz@localhost/skillz"
+  },
+  "devDependencies": {}
+}
