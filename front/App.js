@@ -7,7 +7,8 @@ class App extends Component {
     render() {
         return (
             <div className="ui container">
-                <h1 className="ui dividing header">Skillz Finder</h1>
+                <h1 className="ui dividing header">People Skillz Finder</h1>
+                <p>Use this to find people who etc.</p>
                 <div className="ui two column grid" >
                     <SkillTable className="column" />
                 </div>
@@ -16,7 +17,7 @@ class App extends Component {
     }
 }
 
-const QUERY = gql`
+const userSkillsQuery = gql`
 {
     allUsers {
         edges {
@@ -60,12 +61,12 @@ function personSkillsBySkill(person, skills) {
     return skills.map(({ id, name }) => personSkills[id] || { id, name });
 }
 
-const SkillTable = graphql(QUERY)(({ data }) => {
+const SkillTable = graphql(userSkillsQuery)(({ data }) => {
     if (!data.allUsers) return null;
     let people = data.allUsers.edges.map(({ node }) => node);
     let skills = data.allSkills.edges.map(({ node }) => node);
     people.sort(({ firstName: a }, { firstName: b }) => a < b ? -1 : a > b ? 1 : 0)
-    return <table>
+    return <table className="ui striped definition table">
         <tbody>
             <tr><th />{skills.map(({ name, id }) => <th key={'skill-' + id}>{name}</th>)}</tr>
             {people.map(person =>
@@ -81,8 +82,19 @@ const PersonSkillRow = ({ person: { id: personId, firstName, lastName }, skills 
     <tr>
         <th>{firstName} {lastName}</th>
         {skills.map((node) =>
-            <td key={'p' + personId + 's' + node.id}> {node.level}</td>)}
+            <td key={'p' + personId + 's' + node.id}>
+                {
+                    node.level > 1
+                        ? <Rating level={node.level} />
+                        : <span>{node.level}</span>
+                }
+            </td>)}
     </tr>;
 
+const Rating = ({ rating }) =>
+    <div>
+        {Array.apply(null, Array(5)).map((_, i) =>
+            <i key={i} className="small star icon" />)}
+    </div>
 
 export default App;

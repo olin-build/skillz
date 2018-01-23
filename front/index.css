@@ -1,0 +1,11 @@
+.container {
+  padding: 5em 0em;
+}
+.ui.dividing.header,
+.first {
+  margin-top: 5em;
+}
+
+.ui.dividing.header:first-child {
+  margin-top: 0em;
+}

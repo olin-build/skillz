@@ -1,5 +1,6 @@
 import 'jquery'
 import 'semantic-ui-css/semantic.css'
+import './index.css'
 
 import { ApolloClient } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
