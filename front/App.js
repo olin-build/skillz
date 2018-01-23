@@ -6,11 +6,11 @@ import { graphql } from 'react-apollo';
 class App extends Component {
     render() {
         return (
-            <div className="App">
-                <header>
-                    <h1>Skillz Finder</h1>
-                </header>
-                <SkillTable />
+            <div className="ui container">
+                <h1 className="ui dividing header">Skillz Finder</h1>
+                <div className="ui two column grid" >
+                    <SkillTable className="column" />
+                </div>
             </div>
         );
     }
