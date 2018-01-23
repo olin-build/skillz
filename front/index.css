@@ -1,11 +1,24 @@
 .container {
-  padding: 5em 0em;
+    padding: 5em 0em;
 }
+
 .ui.dividing.header,
 .first {
-  margin-top: 5em;
+    margin-top: 5em;
 }
 
 .ui.dividing.header:first-child {
-  margin-top: 0em;
+    margin-top: 0em;
+}
+
+.icon.star {
+    color: gold;
+}
+
+.icon.heart {
+    color: red;
+}
+
+.inline {
+    display: inline;
 }

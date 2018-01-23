@@ -8,7 +8,11 @@ class App extends Component {
         return (
             <div className="ui container">
                 <h1 className="ui dividing header">People Skillz Finder</h1>
-                <p>Use this to find people who etc.</p>
+                <p>Use this to find people who know or want to learn X.</p>
+                <Rating rank={5} className="inline" />
+                <p> = I know X.</p>
+                <Rating rank={5} className="inline" icon="student" />
+                <p> = I want to learn X.</p>
                 <div className="ui two column grid" >
                     <SkillTable className="column" />
                 </div>
@@ -29,8 +33,8 @@ const userSkillsQuery = gql`
               edges {
                 node {
                   skillId
-                  level
-                  aspiration
+                  experience
+                  desire
                   note
                   instructor
                 }
@@ -83,18 +87,15 @@ const PersonSkillRow = ({ person: { id: personId, firstName, lastName }, skills 
         <th>{firstName} {lastName}</th>
         {skills.map((node) =>
             <td key={'p' + personId + 's' + node.id}>
-                {
-                    node.level > 1
-                        ? <Rating level={node.level} />
-                        : <span>{node.level}</span>
-                }
+                {node.experience && <Rating rank={node.experience} icon="star" />}
+                {node.desire && <Rating rank={node.desire} icon="student" />}
             </td>)}
     </tr>;
 
-const Rating = ({ rating }) =>
+const Rating = ({ rank, icon }) =>
     <div>
-        {Array.apply(null, Array(5)).map((_, i) =>
-            <i key={i} className="small star icon" />)}
+        {Array.apply(null, Array(rank)).map((_, i) =>
+            <i key={i} className={"icon small " + (icon || 'star')} />)}
     </div>
 
 export default App;
