@@ -8,7 +8,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "start": "postgraphql -c postgres://skillz@localhost/skillz"
+    "start": "postgraphql -c postgres://skillz@localhost/skillz --cors"
   },
   "devDependencies": {}
 }

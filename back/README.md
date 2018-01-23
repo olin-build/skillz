@@ -15,3 +15,7 @@ TODO: load the schema.
 
 Run `yarn start` to start the API server.
 Visit <http://localhost:3000/graphiql> to browse the data.
+
+## Acknowledgements
+
+Built with <https://github.com/postgraphql/postgraphql>
