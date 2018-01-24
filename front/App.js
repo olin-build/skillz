@@ -23,8 +23,8 @@ class App extends Component {
                 <Legend />
                 <p>Click to edit.</p>
                 <div className="ui two column grid" >
-                    <SkillTable className="column" onRowClick={person => this.selectPerson(person)} />
-                    {person && <EditPerson person={person} skills={skills} />}
+                    <SkillTableContainer className="column" onRowClick={person => this.selectPerson(person)} />
+                    {person && <EditPersonContainer person={person} skills={skills} />}
                 </div>
             </div>
         );
@@ -83,7 +83,7 @@ function personSkillsBySkill(person, skills) {
     return skills.map(({ id, name }) => personSkills[id] || { id, name });
 }
 
-class SkillTableComponent extends Component {
+class SkillTable extends Component {
     render() {
         let { data } = this.props;
         if (!data.allUsers) return null;
@@ -104,7 +104,7 @@ class SkillTableComponent extends Component {
     }
 }
 
-const SkillTable = graphql(userSkillsQuery)(SkillTableComponent);
+const SkillTableContainer = graphql(userSkillsQuery)(SkillTable);
 
 const PersonSkillRow = ({ person: { id: personId, firstName, lastName }, skills, onClick }) =>
     <tr onClick={onClick}>
@@ -118,6 +118,9 @@ const PersonSkillRow = ({ person: { id: personId, firstName, lastName }, skills,
 
 const EditPerson = ({ person, skills }) => {
     let sorted = personSkillsBySkill(person, skills);
+    function setRating(skill, rating) {
+        console.info(skill, rating)
+    }
     return (<div>
         <h1 className="ui dividing header">{person.firstName} {person.lastName}</h1>
         <table className="striped table">
@@ -126,13 +129,14 @@ const EditPerson = ({ person, skills }) => {
                 {sorted.map((skill, i) =>
                     <tr key={'s-' + skill.id}>
                         <th>{skill.name || skill.skillBySkillId.name}</th>
-                        <td><EditRating rank={skill.experience} /></td>
+                        <td><EditRating rank={skill.experience} onRating={r => setRating(skill, r)} /></td>
                     </tr>)}
             </tbody>
         </table>
     </div>
     );
 }
+const EditPersonContainer = EditPerson;
 
 const Rating = ({ rank, icon }) =>
     <div>
@@ -140,15 +144,17 @@ const Rating = ({ rank, icon }) =>
             <i key={i} className={"icon small " + (icon || 'star')} />)}
     </div>
 
-const EditRating = ({ rank, icon }) => {
+const EditRating = ({ rank, icon, onRating }) => {
     rank = rank || 0;
-    icon = icon || 'star'
+    icon = icon || 'star';
     return (
         <div>
             {rank > 0 && Array.apply(null, Array(rank)).map((_, i) =>
-                <i key={i} className={"icon small " + icon} />)}
+                <i key={i} className={"icon small " + icon}
+                    onClick={() => onRating(i + 1)} />)}
             {rank < 5 && Array.apply(null, Array(5 - rank)).map((_, i) =>
-                <i key={-i} className={"icon small empty " + icon} />)}
+                <i key={i + rank} className={"icon small empty " + icon}
+                    onClick={() => onRating(i + 1 + rank)} />)}
         </div>)
 }
 
