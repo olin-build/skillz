@@ -4,6 +4,8 @@ import { graphql, withApollo } from 'react-apollo';
 
 import gql from 'graphql-tag'
 
+const API_SERVER_URL = process.env.API_SERVER_URL !== true ? process.env.API_SERVER_URL : 'http://127.0.0.1:5000/';
+
 export const PersonSkillRow = ({ person: { id: personId, firstName, lastName }, skills, onClick }) =>
     <tr onClick={onClick}>
         <th>{firstName} {lastName}</th>
@@ -23,7 +25,8 @@ export const PersonSkillRow = ({ person: { id: personId, firstName, lastName }, 
 const EditPerson = ({ person, skills, client, mutate }) => {
     let personSkills = personSkillsBySkill(person, skills);
     function setRating(skill, key, level) {
-        fetch(`http://localhost:5000/person/${person.id}/skill/${skill.skillId}`, {
+        const url = `${API_SERVER_URL}person/${person.id}/skill/${skill.id}`;
+        fetch(url, {
             method: 'POST',
             body: JSON.stringify({ [key]: level }),
             headers: new Headers({ 'Content-Type': 'application/json' })
@@ -39,9 +42,9 @@ const EditPerson = ({ person, skills, client, mutate }) => {
                     <th>Experience</th>
                     <th>Desire</th>
                 </tr>
-                {personSkills.map((skill, i) =>
-                    <tr key={'p' + person.id + 's' + skill.id}>
-                        <th>{skill.name || skill.skillBySkillId.name}</th>
+                {personSkills.map(({ skill, personSkill }) =>
+                    <tr key={`${person.id}-${skill.id}`}>
+                        <th>{skill.name}</th>
                         <td>
                             <EditRating
                                 rating={skill.experience}
@@ -49,7 +52,7 @@ const EditPerson = ({ person, skills, client, mutate }) => {
                         </td>
                         <td>
                             <EditRating
-                                rating={skill.experience}
+                                rating={personSkill.desire}
                                 icon="student"
                                 onRating={r => setRating(skill, 'desire', r)} />
                         </td>
