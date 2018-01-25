@@ -12,6 +12,7 @@
   "license": "MIT",
   "scripts": {
     "build": "poi build --env.API_SERVER_URL $API_SERVER_URL",
+    "deploy": "yarn build && netlify deploy",
     "start": "poi --env.API_SERVER_URL $DEV_API_SERVER_URL"
   },
   "devDependencies": {
