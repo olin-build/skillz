@@ -4,11 +4,14 @@
   "version": "0.1.0",
   "author": "Oliver Steele <oliver.steele@olin.edu>",
   "dependencies": {
+    "babel-preset-env": "^1.6.1",
+    "express": "^4.16.2",
     "postgraphql": "^3.5.4"
   },
   "license": "MIT",
   "scripts": {
-    "start": "postgraphql -c postgres://skillz@localhost/skillz --cors"
+    "start": "babel-node server.js --presets env",
+    "graphql": "postgraphql -c postgres://skillz@localhost/skillz --cors"
   },
   "devDependencies": {}
 }
