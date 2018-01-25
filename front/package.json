@@ -12,7 +12,7 @@
   "license": "MIT",
   "scripts": {
     "build": "poi build --env.API_SERVER_URL $API_SERVER_URL",
-    "start": "poi --env.API_SERVER_URL $API_SERVER_URL"
+    "start": "poi --env.API_SERVER_URL $DEV_API_SERVER_URL"
   },
   "devDependencies": {
     "apollo-client-preset": "^1.0.6",
