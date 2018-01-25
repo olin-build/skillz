@@ -7,8 +7,8 @@ import gql from 'graphql-tag'
 export const PersonSkillRow = ({ person: { id: personId, firstName, lastName }, skills, onClick }) =>
     <tr onClick={onClick}>
         <th>{firstName} {lastName}</th>
-        {skills.map((node, i) =>
-            <td key={'p' + personId + 's' + node.id + '-' + i}>
+        {skills.map((node) =>
+            <td key={node.id}>
                 {node.experience && <Rating rank={node.experience} icon="star" />}
                 {node.desire && <Rating rank={node.desire} icon="student" />}
             </td>)}
@@ -59,7 +59,7 @@ const EditPerson = ({ person, skills, client, mutate }) => {
             <tbody>
                 <tr><th /><th>Experience</th></tr>
                 {personSkills.map((skill, i) =>
-                    <tr key={'p' + person.id + 's' + skill.id + '-' + i}>
+                    <tr key={'p' + person.id + 's' + skill.id}>
                         <th>{skill.name || skill.skillBySkillId.name}</th>
                         <td><EditRating rank={skill.experience} onRating={r => setRating(skill, r)} /></td>
                     </tr>)}

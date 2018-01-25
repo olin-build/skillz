@@ -13,9 +13,9 @@ class PersonSkillTable extends Component {
         people.sort(({ firstName: a }, { firstName: b }) => a < b ? -1 : a > b ? 1 : 0)
         return <table className="ui striped selectable definition table">
             <tbody>
-                <tr><th />{skills.map(({ name, id }) => <th key={'skill-' + id}>{name}</th>)}</tr>
+                <tr><th />{skills.map(({ name, id }) => <th key={id}>{name}</th>)}</tr>
                 {people.map(person =>
-                    <PersonSkillRow key={'person-' + person.id}
+                    <PersonSkillRow key={person.id}
                         person={person}
                         skills={personSkillsBySkill(person, skills)}
                         onClick={_ => this.props.onRowClick(person)}
