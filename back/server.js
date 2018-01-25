@@ -4,7 +4,9 @@ import express from 'express'
 import helmet from 'helmet'
 import postgraphql from 'postgraphql'
 
+const PORT = process.env.PORT || 5000
 const DATABASE_URL = process.env.DATABASE_URL || 'postgres://skillz@localhost/skillz'
+
 const client = new Client({ connectionString: DATABASE_URL })
 client.connect().catch(err => {
     console.error('pg client connect:', err)
@@ -49,6 +51,8 @@ function constructQuery({ tableName, where, cols, data }) {
     return { update, insert, vars }
 }
 
+app.get('/', (req, res) => res.send('Hello World!'))
+
 app.post('/person/:personId/skill/:skillId/', async (req, res) => {
     let { personId, skillId } = req.params
     let data = req.body
@@ -66,4 +70,4 @@ app.post('/person/:personId/skill/:skillId/', async (req, res) => {
     res.json(data)
 })
 
-app.listen(5000)
+app.listen(PORT, () => console.log(`API server listening on port ${PORT}.`))
