@@ -11,6 +11,11 @@
     margin-top: 0em;
 }
 
+.my-rating.compact .icon {
+    margin: 0;
+    padding: 0;
+}
+
 .icon.star {
     color: gold;
 }
