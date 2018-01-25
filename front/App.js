@@ -39,7 +39,8 @@ const Legend = (_) =>
         <p> = I want to learn X.</p>
     </div>
 
-const userSkillsQuery = gql`{
+const userSkillsQuery = gql`
+query {
   allUsers {
       edges {
         node {
@@ -49,6 +50,7 @@ const userSkillsQuery = gql`{
           userSkillsByUserId {
             edges {
               node {
+                id
                 skillId
                 experience
                 desire
@@ -116,10 +118,34 @@ const PersonSkillRow = ({ person: { id: personId, firstName, lastName }, skills,
             </td>)}
     </tr>;
 
-const EditPerson = ({ person, skills }) => {
+const personSkillsMutation = gql`
+mutation UpdateUserSkill ($input: UpdateUserSkillInput!) {
+    updateUserSkill(input: $input) {
+      clientMutationId
+    }
+}`;
+
+// mutation CreateUserSkill($input: CreateUserSkillInput!) {
+//     createUserSkill(input: $input) {
+//       userSkill{id}
+//     }
+//   }
+
+const EditPerson = ({ person, skills, mutate }) => {
     let sorted = personSkillsBySkill(person, skills);
     function setRating(skill, rating) {
-        console.info(skill, rating)
+        let variables = {
+            input: {
+                nodeId: skill.id,
+                userSkillPatch: { experience: rating }
+            }
+        }
+        mutate({ variables })
+            .then(({ data }) => {
+                console.log('got data', data);
+            }).catch((error) => {
+                console.log('there was an error sending the query', error);
+            });
     }
     return (<div>
         <h1 className="ui dividing header">{person.firstName} {person.lastName}</h1>
@@ -136,7 +162,7 @@ const EditPerson = ({ person, skills }) => {
     </div>
     );
 }
-const EditPersonContainer = EditPerson;
+const EditPersonContainer = graphql(personSkillsMutation)(EditPerson);
 
 const Rating = ({ rank, icon }) =>
     <div>
