@@ -44,12 +44,12 @@ const EditPerson = ({ person, skills, client, mutate }) => {
                         <th>{skill.name || skill.skillBySkillId.name}</th>
                         <td>
                             <EditRating
-                                rank={skill.experience}
+                                rating={skill.experience}
                                 onRating={r => setRating(skill, 'experience', r)} />
                         </td>
                         <td>
                             <EditRating
-                                rank={skill.experience}
+                                rating={skill.experience}
                                 icon="student"
                                 onRating={r => setRating(skill, 'desire', r)} />
                         </td>
