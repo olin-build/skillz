@@ -23,7 +23,7 @@ export const PersonSkillRow = ({ person: { id: personId, firstName, lastName }, 
     </tr>;
 
 const EditPerson = ({ person, skills, client, mutate }) => {
-    let personSkills = personSkillsBySkill(person, skills);
+    let personSkills = personSkillsBySkillObjects(person, skills);
     function setRating(skill, key, level) {
         const url = `${API_SERVER_URL}person/${person.id}/skill/${skill.id}`;
         fetch(url, {
@@ -47,7 +47,7 @@ const EditPerson = ({ person, skills, client, mutate }) => {
                         <th>{skill.name}</th>
                         <td>
                             <EditRating
-                                rating={skill.experience}
+                                rating={personSkill.experience}
                                 onRating={r => setRating(skill, 'experience', r)} />
                         </td>
                         <td>
@@ -61,7 +61,6 @@ const EditPerson = ({ person, skills, client, mutate }) => {
         </table>
     </div>
     );
-
 }
 
 const personSkillsMutation = gql`
@@ -73,6 +72,16 @@ const personSkillsMutation = gql`
 `;
 
 export const EditPersonContainer = graphql(personSkillsMutation)(withApollo(EditPerson));
+
+export function personSkillsBySkillObjects(person, skills) {
+    let personSkillsById = Object();
+    person.userSkillsByUserId.edges.forEach(({ node }) =>
+        personSkillsById[node.skillId] = node
+    );
+    return skills.map(skill => ({
+        skill, personSkill: personSkillsById[skill.id] || {}
+    }));
+}
 
 export function personSkillsBySkill(person, skills) {
     let personSkills = Object();
