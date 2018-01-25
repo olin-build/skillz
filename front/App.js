@@ -111,8 +111,8 @@ const SkillTableContainer = graphql(userSkillsQuery)(SkillTable);
 const PersonSkillRow = ({ person: { id: personId, firstName, lastName }, skills, onClick }) =>
     <tr onClick={onClick}>
         <th>{firstName} {lastName}</th>
-        {skills.map((node) =>
-            <td key={'p' + personId + 's' + node.id}>
+        {skills.map((node, i) =>
+            <td key={'p' + personId + 's' + node.id + '-' + i}>
                 {node.experience && <Rating rank={node.experience} icon="star" />}
                 {node.desire && <Rating rank={node.desire} icon="student" />}
             </td>)}
@@ -133,7 +133,7 @@ mutation UpdateUserSkill ($input: UpdateUserSkillInput!) {
 
 const EditPerson = ({ person, skills, mutate }) => {
     let sorted = personSkillsBySkill(person, skills);
-    function setRating(skill, rating) {
+    function setRatingGraphql(skill, rating) {
         let variables = {
             input: {
                 nodeId: skill.id,
@@ -147,13 +147,24 @@ const EditPerson = ({ person, skills, mutate }) => {
                 console.log('there was an error sending the query', error);
             });
     }
+    function setRating(skill, rating) {
+        fetch(`http://localhost:5000/person/${person.id}/skill/${skill.id}`, {
+            method: 'POST',
+            body: JSON.stringify({ experience: rating }),
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        }).then(res => res.json())
+            .catch(error => console.error('Error:', error))
+            .then(response => console.log('Success:', response));
+    }
     return (<div>
         <h1 className="ui dividing header">{person.firstName} {person.lastName}</h1>
         <table className="striped table">
             <tbody>
                 <tr><th /><th>Experience</th></tr>
                 {sorted.map((skill, i) =>
-                    <tr key={'s-' + skill.id}>
+                    <tr key={'p' + person.id + 's' + skill.id + '-' + i}>
                         <th>{skill.name || skill.skillBySkillId.name}</th>
                         <td><EditRating rank={skill.experience} onRating={r => setRating(skill, r)} /></td>
                     </tr>)}
