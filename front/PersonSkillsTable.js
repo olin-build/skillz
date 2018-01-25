@@ -18,7 +18,7 @@ class PersonSkillTable extends Component {
                     <PersonSkillRow key={person.id}
                         person={person}
                         skills={personSkillsBySkill(person, skills)}
-                        onClick={_ => this.props.onRowClick(person)}
+                        onClick={() => this.props.onRowClick(person)}
                     />)}
             </tbody>
         </table>

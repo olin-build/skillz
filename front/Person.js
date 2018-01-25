@@ -8,17 +8,17 @@ const API_SERVER_URL = process.env.API_SERVER_URL !== true ? process.env.API_SER
 
 export const PersonSkillRow = ({ person: { id: personId, firstName, lastName }, skills, onClick }) =>
     <tr onClick={onClick}>
-        <th>{firstName} {lastName}</th>
+        <th><div>{firstName}</div><div className="right aligned">{lastName}</div></th>
         {skills.map((node) =>
             <td key={node.id}>
                 {node.experience && <Rating
                     rank={node.experience}
                     icon="star"
-                />}
+                /> || <div>&nbsp;</div>}
                 {node.desire && <Rating
                     rank={node.desire}
                     icon="student"
-                />}
+                /> || <div>&nbsp;</div>}
             </td>)}
     </tr>;
 
@@ -40,7 +40,7 @@ const EditPerson = ({ person, skills, client, mutate }) => {
             <tbody>
                 <tr><th />
                     <th>Experience</th>
-                    <th>Desire</th>
+                    <th>Want to Learn</th>
                 </tr>
                 {personSkills.map(({ skill, personSkill }) =>
                     <tr key={`${person.id}-${skill.id}`}>
@@ -65,10 +65,10 @@ const EditPerson = ({ person, skills, client, mutate }) => {
 
 const personSkillsMutation = gql`
     mutation UpdateUserSkill ($input: UpdateUserSkillInput!) {
-        updateUserSkill(input: $input) {
-        clientMutationId
+            updateUserSkill(input: $input) {
+            clientMutationId
         }
-    }
+        }
 `;
 
 export const EditPersonContainer = graphql(personSkillsMutation)(withApollo(EditPerson));
