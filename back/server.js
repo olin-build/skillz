@@ -4,7 +4,7 @@ import express from 'express'
 import helmet from 'helmet'
 import postgraphql from 'postgraphql'
 
-const DATABASE_URL = 'postgres://skillz@localhost/skillz'
+const DATABASE_URL = process.env.DATABASE_URL || 'postgres://skillz@localhost/skillz'
 const client = new Client({ connectionString: DATABASE_URL })
 client.connect().catch(err => {
     console.error('pg client connect:', err)
