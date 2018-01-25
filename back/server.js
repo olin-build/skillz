@@ -52,11 +52,11 @@ function constructQuery({ tableName, where, cols, data }) {
 app.post('/person/:personId/skill/:skillId/', async (req, res) => {
     let { personId, skillId } = req.params
     let data = req.body
-    console.info('set', req.params, data)
+    // console.info('set', req.params, data)
     const { update, insert, vars } = constructQuery({
         tableName: 'user_skill',
         where: { user_id: personId, skill_id: skillId },
-        cols: ['experience'],
+        cols: ['experience', 'desire'],
         data
     })
     const { rowCount } = await client.query(update, vars)

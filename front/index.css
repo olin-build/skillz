@@ -24,6 +24,10 @@
     color: red;
 }
 
+.icon.empty.student {
+    color: #ccc;
+}
+
 .inline {
     display: inline;
 }
