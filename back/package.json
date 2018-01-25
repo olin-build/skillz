@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "author": "Oliver Steele <oliver.steele@olin.edu>",
   "dependencies": {
+    "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "express": "^4.16.2",
     "helmet": "^3.10.0",
