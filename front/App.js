@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { graphql, withApollo } from 'react-apollo';
 
 import gql from 'graphql-tag'
-import { graphql } from 'react-apollo';
 
 class App extends Component {
     constructor(props) {
@@ -131,8 +131,8 @@ mutation UpdateUserSkill ($input: UpdateUserSkillInput!) {
 //     }
 //   }
 
-const EditPerson = ({ person, skills, mutate }) => {
-    let sorted = personSkillsBySkill(person, skills);
+const EditPerson = ({ person, skills, client, mutate }) => {
+    let personSkills = personSkillsBySkill(person, skills);
     function setRatingGraphql(skill, rating) {
         let variables = {
             input: {
@@ -148,22 +148,34 @@ const EditPerson = ({ person, skills, mutate }) => {
             });
     }
     function setRating(skill, rating) {
-        fetch(`http://localhost:5000/person/${person.id}/skill/${skill.id}`, {
+        // client.writeFragment({
+        //     id: skill.id,
+        //     // id: `UserSkill_${skill.id}`,
+        //     fragment: gql`
+        //       fragment userSkill on UserSkill {
+        //         experience
+        //       }
+        //     `,
+        //     data: {
+        //         experience: rating,
+        //         __typename: 'UserSkill'
+        //     },
+        // });
+        fetch(`http://localhost:5000/person/${person.id}/skill/${skill.skillId}`, {
             method: 'POST',
             body: JSON.stringify({ experience: rating }),
-            headers: new Headers({
-                'Content-Type': 'application/json'
-            })
+            headers: new Headers({ 'Content-Type': 'application/json' })
         }).then(res => res.json())
             .catch(error => console.error('Error:', error))
-            .then(response => console.log('Success:', response));
+            .then(response => client.resetStore());
+        // .then(response => window.location.reload());
     }
     return (<div>
         <h1 className="ui dividing header">{person.firstName} {person.lastName}</h1>
         <table className="striped table">
             <tbody>
                 <tr><th /><th>Experience</th></tr>
-                {sorted.map((skill, i) =>
+                {personSkills.map((skill, i) =>
                     <tr key={'p' + person.id + 's' + skill.id + '-' + i}>
                         <th>{skill.name || skill.skillBySkillId.name}</th>
                         <td><EditRating rank={skill.experience} onRating={r => setRating(skill, r)} /></td>
@@ -173,7 +185,7 @@ const EditPerson = ({ person, skills, mutate }) => {
     </div>
     );
 }
-const EditPersonContainer = graphql(personSkillsMutation)(EditPerson);
+const EditPersonContainer = graphql(personSkillsMutation)(withApollo(EditPerson));
 
 const Rating = ({ rank, icon }) =>
     <div>
