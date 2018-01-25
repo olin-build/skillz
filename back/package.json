@@ -6,6 +6,7 @@
   "dependencies": {
     "babel-preset-env": "^1.6.1",
     "express": "^4.16.2",
+    "helmet": "^3.10.0",
     "postgraphql": "^3.5.4"
   },
   "license": "MIT",
