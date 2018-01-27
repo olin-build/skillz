@@ -4,7 +4,7 @@ import { graphql, withApollo } from 'react-apollo';
 
 import gql from 'graphql-tag'
 
-export const PersonSkillTable = ({ data }) => {
+export const PersonSkillsTable = ({ data }) => {
   if (!data.allUsers) return null;
   let people = data.allUsers.edges.map(({ node }) => node);
   let skills = data.allSkills.edges.map(({ node }) => node);
@@ -55,4 +55,4 @@ query {
 }`;
 
 
-export const PersonSkillTableContainer = graphql(personSkillsQuery)(PersonSkillTable);
+export const PersonSkillTableContainer = graphql(personSkillsQuery)(PersonSkillsTable);

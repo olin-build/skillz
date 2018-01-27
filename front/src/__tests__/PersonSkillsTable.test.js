@@ -1,4 +1,4 @@
-import { PersonSkillTable } from '../PersonSkillsTable.js'
+import { PersonSkillsTable } from '../PersonSkillsTable.js'
 import React from 'react'
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
@@ -49,10 +49,10 @@ const personSkillsData = {
     }
 };
 
-describe('PersonSkillTable', () => {
+describe('PersonSkillsTable', () => {
     test(`matches snapshot`, () => {
         const component = renderer.create(
-            <PersonSkillTable data={personSkillsData} />
+            <PersonSkillsTable data={personSkillsData} />
         );
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();

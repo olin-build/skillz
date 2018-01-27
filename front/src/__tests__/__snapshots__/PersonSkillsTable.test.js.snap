@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PersonSkillTable matches snapshot 1`] = `
+exports[`PersonSkillsTable matches snapshot 1`] = `
 <table
   className="ui striped selectable definition table"
 >
