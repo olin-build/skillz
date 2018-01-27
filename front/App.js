@@ -45,9 +45,9 @@ const Instructions = () =>
 
 const Legend = () =>
     <div>
-        <Rating rank={5} className="inline" />
+        <Rating rating={5} className="inline" />
         <p> = knows X.</p>
-        <Rating rank={5} className="inline" icon="student" />
+        <Rating rating={5} className="inline" icon="student" />
         <p> = wants to learn X.</p>
         <div style={{ height: '20px' }} />
     </div>

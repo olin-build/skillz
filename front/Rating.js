@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-export const Rating = ({ rank, icon }) =>
+export const Rating = ({ rating, icon }) =>
     <div className="compact my-rating">
-        {Array.apply(null, Array(rank)).map((_, i) =>
+        {Array.apply(null, Array(rating)).map((_, i) =>
             <i key={i} className={"icon small " + (icon || 'star')} />)}
     </div>
 
