@@ -22,12 +22,7 @@ class App extends Component {
         return (
             <div className="ui container">
                 <h1 className="ui dividing header">People Skillz Finder</h1>
-                <p>
-                    Use this tool to find people who know or want to learn X.
-                    </p>
-                Click a row to edit it. (Please only edit yourself or with permission!)
-                    <p>
-                </p>
+                <Instructions />
                 <Legend />
                 <div className="ui two column grid" >
                     <PersonSkillTableContainer className="column" onRowClick={person => this.selectPerson(person)} />
@@ -37,6 +32,16 @@ class App extends Component {
         );
     }
 }
+
+const Instructions = () =>
+    <div>
+        <p>
+            Use this tool to find people who know or want to learn X. </p>
+        <p>
+            Click a row to edit it. (Please only edit yourself or with permission!)
+            A panel will appear below the table.</p>
+    </div>
+
 
 const Legend = () =>
     <div>
