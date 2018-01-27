@@ -7,7 +7,7 @@ import gql from 'graphql-tag'
 const API_SERVER_URL = process.env.API_SERVER_URL !== true ? process.env.API_SERVER_URL : 'http://127.0.0.1:5000/';
 
 const EditPerson = ({ person, skills, client, mutate }) => {
-    let personSkills = personSkillsBySkillObjects(person, skills);
+    let personSkills = getPersonSkillRecords(person, skills);
     function setRating(skill, key, level) {
         const url = `${API_SERVER_URL}person/${person.id}/skill/${skill.id}`;
         fetch(url, {
@@ -49,7 +49,7 @@ const EditPerson = ({ person, skills, client, mutate }) => {
 
 export const EditPersonContainer = EditPerson;
 
-export function personSkillsBySkillObjects(person, skills) {
+export function getPersonSkillRecords(person, skills) {
     let personSkillsById = Object();
     person.userSkillsByUserId.edges.forEach(({ node }) =>
         personSkillsById[node.skillId] = node
@@ -57,10 +57,4 @@ export function personSkillsBySkillObjects(person, skills) {
     return skills.map(skill => ({
         skill, personSkill: personSkillsById[skill.id] || {}
     }));
-}
-
-export function personSkillsBySkill(person, skills) {
-    let personSkills = Object();
-    person.userSkillsByUserId.edges.forEach(({ node }) => personSkills[node.skillId] = node);
-    return skills.map(({ id, name }) => personSkills[id] || { id, name });
 }

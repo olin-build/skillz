@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { graphql, withApollo } from 'react-apollo';
 
 import { Rating } from './Rating.js'
+import { getPersonSkillRecords } from './Person.js'
 import gql from 'graphql-tag'
-import { personSkillsBySkill } from './Person.js'
 
 export const PersonSkillsTable = ({ data }) => {
   if (!data || !data.allUsers) return null;
@@ -22,17 +22,19 @@ export const PersonSkillsTable = ({ data }) => {
     </tbody>
   </table>
 }
-export const PersonSkillRow = ({ person, skills, onClick }) =>
-  <tr onClick={onClick}>
+export const PersonSkillRow = ({ person, skills, onClick }) => {
+  const personSkillRecords = getPersonSkillRecords(person, skills);
+  return (<tr onClick={onClick}>
     <th>
       <div>{person.firstName}</div>
       <div className="right aligned">{person.lastName}</div></th>
-    {personSkillsBySkill(person, skills).map((node) =>
-      <td key={node.id}>
-        <Rating rating={node.experience} icon="star" />
-        <Rating rating={node.desire} icon="student" />
+    {personSkillRecords.map(({ skill, personSkill }) =>
+      <td key={skill.id}>
+        <Rating rating={personSkill.experience} icon="star" />
+        <Rating rating={personSkill.desire} icon="student" />
       </td>)}
-  </tr>;
+  </tr>)
+};
 
 export const personSkillsQuery = gql`
 query {
