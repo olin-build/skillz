@@ -4,7 +4,7 @@ exports[`PersonSkillsTable matches snapshot 1`] = `
 <table
   className="ui striped selectable definition table"
 >
-  <tbody>
+  <thead>
     <tr
       className="sticky"
     >
@@ -16,6 +16,8 @@ exports[`PersonSkillsTable matches snapshot 1`] = `
         Jest
       </th>
     </tr>
+  </thead>
+  <tbody>
     <tr
       onClick={[Function]}
     >

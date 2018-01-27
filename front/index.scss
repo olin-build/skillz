@@ -2,6 +2,15 @@
     padding: 5em 0em;
 }
 
+.inline {
+    display: inline;
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+}
+
 .ui.dividing.header,
 .first {
     margin-top: 5em;
@@ -29,8 +38,4 @@
     x.icon.circle {
         color: #888;
     }
-}
-
-.inline {
-    display: inline;
 }

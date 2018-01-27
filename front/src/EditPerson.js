@@ -21,14 +21,20 @@ const EditPerson = ({ person, client, data }) => {
             .then(response => client.resetStore());
     }
     return (<div>
-        <h1 className="ui dividing header">{person.firstName} {person.lastName}</h1>
         <table className="ui large striped table">
-            <tbody>
-                <tr className="sticky">
+            <caption>
+                <h1 className="ui header left aligned">
+                    {person.firstName} {person.lastName}
+                </h1>
+            </caption>
+            <thead className="sticky">
+                <tr>
                     <th />
                     <th>Experience</th>
-                    <th>Desire to Learn</th>
+                    <th>Interest Level</th>
                 </tr>
+            </thead>
+            <tbody>
                 {personSkills.map(({ skill, personSkill }) =>
                     <tr key={`${person.id}-${skill.id}`}>
                         <th>{skill.name}</th>

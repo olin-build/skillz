@@ -42,22 +42,26 @@ const Instructions = () =>
 
 const Legend = () =>
     <table>
-        <tr>
-            <td><Rating rating={5} className="inline" /></td>
-            <td>very experienced</td>
-        </tr>
-        <tr>
-            <td><Rating rating={1} className="inline" /></td>
-            <td>knows a little</td>
-        </tr>
-        <tr>
-            <td><Rating rating={5} className="inline" icon="student" /></td>
-            <td>really wants to learn</td>
-        </tr>
-        <tr>
-            <td><Rating rating={0} className="inline" /></td>
-            <td>doesn't know / doesn't care</td>
-        </tr>
+        <tbody>
+            <tr>
+                <td><Rating rating={1} className="inline" /></td>
+                <td>minimal experience</td>
+                <td><Rating rating={5} className="inline" icon="student" /></td>
+                <td>minimal interest</td>
+            </tr>
+            <tr>
+                <td><Rating rating={5} className="inline" /></td>
+                <td>very experienced</td>
+                <td><Rating rating={5} className="inline" icon="student" /></td>
+                <td>really wants to learn</td>
+            </tr>
+            <tr>
+                <td><Rating rating={0} className="inline" /></td>
+                <td>doesn't know</td>
+                <td><Rating rating={0} className="inline" /></td>
+                <td>not interested</td>
+            </tr>
+        </tbody>
     </table>
 
 
