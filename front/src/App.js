@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { graphql, withApollo } from 'react-apollo';
 
 import { EditPersonContainer } from './EditPerson.js'
-import { PersonSkillTableContainer } from './PersonSkillsTable.js'
+import { PersonSkillsTableContainer } from './PersonSkillsTable.js'
 import gql from 'graphql-tag'
 
 class App extends Component {
@@ -23,7 +23,10 @@ class App extends Component {
                     <Instructions />
                     <Legend />
                 </div>
-                <PersonSkillTableContainer className="column" onRowClick={person => this.selectPerson(person)} />
+                <PersonSkillsTableContainer className="column"
+                    editablePerson={person}
+                    onRowClick={person => this.selectPerson(person)}
+                />
                 {person && <EditPersonContainer person={person} />}
             </div>
         );

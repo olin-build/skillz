@@ -127,7 +127,16 @@ exports[`EditRating matches snapshots: rating=null 1`] = `
 exports[`Rating matches snapshots: rating=0 1`] = `
 <div
   className="compact my-rating"
-/>
+>
+  <i
+    className="\${size} empty star icon"
+    style={
+      Object {
+        "color": "transparent",
+      }
+    }
+  />
+</div>
 `;
 
 exports[`Rating matches snapshots: rating=1 1`] = `
@@ -135,7 +144,7 @@ exports[`Rating matches snapshots: rating=1 1`] = `
   className="compact my-rating"
 >
   <i
-    className="tiny icon star"
+    className="tiny star icon"
   />
 </div>
 `;
@@ -145,19 +154,19 @@ exports[`Rating matches snapshots: rating=5 1`] = `
   className="compact my-rating"
 >
   <i
-    className="tiny icon star"
+    className="tiny star icon"
   />
   <i
-    className="tiny icon star"
+    className="tiny star icon"
   />
   <i
-    className="tiny icon star"
+    className="tiny star icon"
   />
   <i
-    className="tiny icon star"
+    className="tiny star icon"
   />
   <i
-    className="tiny icon star"
+    className="tiny star icon"
   />
 </div>
 `;
@@ -165,5 +174,14 @@ exports[`Rating matches snapshots: rating=5 1`] = `
 exports[`Rating matches snapshots: rating=null 1`] = `
 <div
   className="compact my-rating"
-/>
+>
+  <i
+    className="\${size} empty star icon"
+    style={
+      Object {
+        "color": "transparent",
+      }
+    }
+  />
+</div>
 `;

@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 
-export const Rating = ({ rating, icon }) =>
-    <div className="compact my-rating">
+export const Rating = ({ rating, icon }) => {
+    const size = 'tiny';
+    return (<div className="compact my-rating">
         {Array.apply(null, Array(rating || 0)).map((_, i) =>
-            <i key={i} className={"tiny icon " + (icon || 'star')} />)}
-    </div>
+            <i key={i} className={`${size} ${icon || 'star'} icon`} />)}
+        {!!rating || <i className="${size} empty star icon" style={{ color: 'transparent' }} />}
+    </div>)
+}
 
 export class EditRating extends Component {
     constructor(props) {

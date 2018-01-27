@@ -31,21 +31,61 @@ exports[`PersonSkillsTable matches snapshot 1`] = `
           Toth
         </div>
       </th>
-      <td>
+      <td
+        className="center aligned"
+      >
         <div
           className="compact my-rating"
-        />
+        >
+          <i
+            className="\${size} empty star icon"
+            style={
+              Object {
+                "color": "transparent",
+              }
+            }
+          />
+        </div>
         <div
           className="compact my-rating"
-        />
+        >
+          <i
+            className="\${size} empty star icon"
+            style={
+              Object {
+                "color": "transparent",
+              }
+            }
+          />
+        </div>
       </td>
-      <td>
+      <td
+        className="center aligned"
+      >
         <div
           className="compact my-rating"
-        />
+        >
+          <i
+            className="\${size} empty star icon"
+            style={
+              Object {
+                "color": "transparent",
+              }
+            }
+          />
+        </div>
         <div
           className="compact my-rating"
-        />
+        >
+          <i
+            className="\${size} empty star icon"
+            style={
+              Object {
+                "color": "transparent",
+              }
+            }
+          />
+        </div>
       </td>
     </tr>
   </tbody>

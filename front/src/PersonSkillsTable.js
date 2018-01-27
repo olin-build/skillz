@@ -47,7 +47,7 @@ export const PersonSkillRow = ({ person, skills, onClick }) => {
       <div>{person.firstName}</div>
       <div className="right aligned">{person.lastName}</div></th>
     {personSkillRecords.map(({ skill, personSkill }) =>
-      <td key={skill.id}>
+      <td key={skill.id} className="center aligned">
         <Rating rating={personSkill.experience} icon="star" />
         <Rating rating={personSkill.desire} icon="student" />
       </td>)}
@@ -87,7 +87,7 @@ query {
 }`;
 
 
-export const PersonSkillTableContainer = graphql(personSkillsQuery, {
+export const PersonSkillsTableContainer = graphql(personSkillsQuery, {
   options: {
     errorPolicy: 'all'
   }
