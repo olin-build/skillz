@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditRating makes stars 1`] = `
+<div
+  className="my-rating"
+>
+  <i
+    className="small circle icon"
+    onClick={[Function]}
+  />
+  <i
+    className="icon small empty star"
+    onClick={[Function]}
+  />
+  <i
+    className="icon small empty star"
+    onClick={[Function]}
+  />
+  <i
+    className="icon small empty star"
+    onClick={[Function]}
+  />
+  <i
+    className="icon small empty star"
+    onClick={[Function]}
+  />
+  <i
+    className="icon small empty star"
+    onClick={[Function]}
+  />
+</div>
+`;
+
+exports[`Rating makes stars 1`] = `
+<div
+  className="compact my-rating"
+>
+  <i
+    className="icon small star"
+  />
+</div>
+`;

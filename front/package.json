@@ -13,15 +13,18 @@
   "scripts": {
     "build": "poi build --env.API_SERVER_URL $API_SERVER_URL",
     "deploy": "yarn build && netlify deploy",
-    "start": "poi --env.API_SERVER_URL $DEV_API_SERVER_URL"
+    "start": "poi --env.API_SERVER_URL $DEV_API_SERVER_URL",
+    "test": "jest"
   },
   "devDependencies": {
     "apollo-client-preset": "^1.0.6",
     "babel-preset-env": "^1.6.1",
     "graphql": "^0.12.3",
     "graphql-tag": "^2.6.1",
+    "jest": "^22.1.4",
     "poi": "^9.6.13",
     "react-apollo": "^2.0.4",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-test-renderer": "^16.2.0"
   }
 }

@@ -17,11 +17,9 @@ export class EditRating extends Component {
         this.setState({ rating });
     }
     render() {
-        let { icon } = this.props;
-        let { rating } = this.state;
-        let onRating = this.onRating;
-        rating = rating || 0;
-        icon = icon || 'star';
+        let { props, state, onRating } = this;
+        const icon = props.icon || 'star';
+        const rating = state.rating || 0;
         return (
             <div className="my-rating">
                 <i className={"small circle icon" + (rating ? " thin" : "")}
