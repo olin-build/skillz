@@ -7,7 +7,7 @@ import { shallow } from 'enzyme';
 describe('Rating', () => {
 
 
-    [0, 1, 5].forEach(rating => {
+    [null, 0, 1, 5].forEach(rating => {
         test(`${rating} matches snapshot`, () => {
 
             const component = renderer.create(
@@ -31,7 +31,7 @@ describe('Rating', () => {
 
 
 describe('EditRating', () => {
-    [0, 1, 5].forEach(rating => {
+    [null, 0, 1, 5].forEach(rating => {
         test(`rating ${rating} matches snapshot`, () => {
             const component = renderer.create(
                 <EditRating rating={rating} />

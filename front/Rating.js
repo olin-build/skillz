@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export const Rating = ({ rating, icon }) =>
     <div className="compact my-rating">
-        {Array.apply(null, Array(rating)).map((_, i) =>
+        {Array.apply(null, Array(rating || 0)).map((_, i) =>
             <i key={i} className={"icon small " + (icon || 'star')} />)}
     </div>
 

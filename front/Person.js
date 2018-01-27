@@ -11,14 +11,8 @@ export const PersonSkillRow = ({ person: { id: personId, firstName, lastName }, 
         <th><div>{firstName}</div><div className="right aligned">{lastName}</div></th>
         {skills.map((node) =>
             <td key={node.id}>
-                {node.experience && <Rating
-                    rating={node.experience}
-                    icon="star"
-                /> || <div>&nbsp;</div>}
-                {node.desire && <Rating
-                    rating={node.desire}
-                    icon="student"
-                /> || <div>&nbsp;</div>}
+                <Rating rating={node.experience} icon="star" />
+                <Rating rating={node.desire} icon="student" />
             </td>)}
     </tr>;
 

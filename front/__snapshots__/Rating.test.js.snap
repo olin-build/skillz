@@ -93,6 +93,37 @@ exports[`EditRating rating 5 matches snapshot 1`] = `
 </div>
 `;
 
+exports[`EditRating rating null matches snapshot 1`] = `
+<div
+  className="my-rating"
+>
+  <i
+    className="small circle icon"
+    onClick={[Function]}
+  />
+  <i
+    className="icon small empty star"
+    onClick={[Function]}
+  />
+  <i
+    className="icon small empty star"
+    onClick={[Function]}
+  />
+  <i
+    className="icon small empty star"
+    onClick={[Function]}
+  />
+  <i
+    className="icon small empty star"
+    onClick={[Function]}
+  />
+  <i
+    className="icon small empty star"
+    onClick={[Function]}
+  />
+</div>
+`;
+
 exports[`Rating 0 matches snapshot 1`] = `
 <div
   className="compact my-rating"
@@ -129,4 +160,10 @@ exports[`Rating 5 matches snapshot 1`] = `
     className="icon small star"
   />
 </div>
+`;
+
+exports[`Rating null matches snapshot 1`] = `
+<div
+  className="compact my-rating"
+/>
 `;
