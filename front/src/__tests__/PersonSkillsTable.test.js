@@ -1,4 +1,4 @@
-import { PersonSkillTable } from './PersonSkillsTable.js'
+import { PersonSkillTable } from '../PersonSkillsTable.js'
 import React from 'react'
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';

@@ -30,6 +30,10 @@
     "react-test-renderer": "^16.2.0"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "./setupTests.js"
+    "rootDir": "src",
+    "setupTestFrameworkScriptFile": "./__tests__/setup.js",
+    "testPathIgnorePatterns": [
+      "setup.js"
+    ]
   }
 }

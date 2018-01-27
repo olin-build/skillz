@@ -57,15 +57,7 @@ const EditPerson = ({ person, skills, client, mutate }) => {
     );
 }
 
-const personSkillsMutation = gql`
-    mutation UpdateUserSkill ($input: UpdateUserSkillInput!) {
-            updateUserSkill(input: $input) {
-            clientMutationId
-        }
-        }
-`;
-
-export const EditPersonContainer = graphql(personSkillsMutation)(withApollo(EditPerson));
+export const EditPersonContainer = EditPerson;
 
 export function personSkillsBySkillObjects(person, skills) {
     let personSkillsById = Object();

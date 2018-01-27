@@ -1,4 +1,4 @@
-import { EditRating, Rating } from './Rating.js'
+import { EditRating, Rating } from '../Rating.js'
 
 import React from 'react'
 import renderer from 'react-test-renderer';
