@@ -1,11 +1,12 @@
-import { PersonSkillRow, personSkillsBySkill } from './Person.js'
 import React, { Component } from 'react';
 import { graphql, withApollo } from 'react-apollo';
 
+import { Rating } from './Rating.js'
 import gql from 'graphql-tag'
+import { personSkillsBySkill } from './Person.js'
 
 export const PersonSkillsTable = ({ data }) => {
-  if (!data.allUsers) return null;
+  if (!data || !data.allUsers) return null;
   let people = data.allUsers.edges.map(({ node }) => node);
   let skills = data.allSkills.edges.map(({ node }) => node);
   people.sort(({ firstName: a }, { firstName: b }) => a < b ? -1 : a > b ? 1 : 0)
@@ -15,12 +16,23 @@ export const PersonSkillsTable = ({ data }) => {
       {people.map(person =>
         <PersonSkillRow key={person.id}
           person={person}
-          skills={personSkillsBySkill(person, skills)}
+          skills={skills}
           onClick={() => this.props.onRowClick(person)}
         />)}
     </tbody>
   </table>
 }
+export const PersonSkillRow = ({ person, skills, onClick }) =>
+  <tr onClick={onClick}>
+    <th>
+      <div>{person.firstName}</div>
+      <div className="right aligned">{person.lastName}</div></th>
+    {personSkillsBySkill(person, skills).map((node) =>
+      <td key={node.id}>
+        <Rating rating={node.experience} icon="star" />
+        <Rating rating={node.desire} icon="student" />
+      </td>)}
+  </tr>;
 
 export const personSkillsQuery = gql`
 query {

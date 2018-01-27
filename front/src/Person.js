@@ -1,20 +1,10 @@
-import { EditRating, Rating } from './Rating.js'
 import React, { Component } from 'react';
 import { graphql, withApollo } from 'react-apollo';
 
+import { EditRating } from './Rating.js'
 import gql from 'graphql-tag'
 
 const API_SERVER_URL = process.env.API_SERVER_URL !== true ? process.env.API_SERVER_URL : 'http://127.0.0.1:5000/';
-
-export const PersonSkillRow = ({ person: { id: personId, firstName, lastName }, skills, onClick }) =>
-    <tr onClick={onClick}>
-        <th><div>{firstName}</div><div className="right aligned">{lastName}</div></th>
-        {skills.map((node) =>
-            <td key={node.id}>
-                <Rating rating={node.experience} icon="star" />
-                <Rating rating={node.desire} icon="student" />
-            </td>)}
-    </tr>;
 
 const EditPerson = ({ person, skills, client, mutate }) => {
     let personSkills = personSkillsBySkillObjects(person, skills);

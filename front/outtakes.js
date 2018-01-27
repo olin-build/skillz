@@ -1,3 +1,13 @@
+const personSkillsMutation = gql`
+    mutation UpdateUserSkill ($input: UpdateUserSkillInput!) {
+            updateUserSkill(input: $input) {
+            clientMutationId
+        }
+        }
+`;
+
+export const EditPersonContainer = graphql(personSkillsMutation)(withApollo(EditPerson));
+
 function setRatingGraphql(skill, rating) {
     let variables = {
         input: {

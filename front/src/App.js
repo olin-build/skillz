@@ -1,9 +1,9 @@
 import { EditRating, Rating } from './Rating.js'
-import { PersonSkillTableContainer, personSkillsQuery } from './PersonSkillsTable.js'
 import React, { Component } from 'react';
 import { graphql, withApollo } from 'react-apollo';
 
 import { EditPersonContainer } from './Person.js'
+import { PersonSkillTableContainer } from './PersonSkillsTable.js'
 import gql from 'graphql-tag'
 
 class App extends Component {
@@ -15,9 +15,6 @@ class App extends Component {
         this.setState({ person });
     }
     render() {
-        const { data } = this.props;
-        if (!data.allSkills) return <div>Loading…</div>;
-        let skills = data.allSkills.edges.map(({ node }) => node);
         const { person } = this.state;
         return (
             <div className="ui container">
@@ -26,7 +23,7 @@ class App extends Component {
                 <Legend />
                 <div className="ui two column grid" >
                     <PersonSkillTableContainer className="column" onRowClick={person => this.selectPerson(person)} />
-                    {person && <EditPersonContainer person={person} skills={skills} />}
+                    {person && <EditPersonContainer person={person} />}
                 </div>
             </div>
         );
@@ -53,4 +50,4 @@ const Legend = () =>
     </div>
 
 
-export default graphql(personSkillsQuery)(App);
+export default App;
