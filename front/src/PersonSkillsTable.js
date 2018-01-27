@@ -15,13 +15,20 @@ export const PersonSkillsTable = ({ data, onRowClick }) => {
       </div>
     </div>)
   }
-  if (!data || !data.allUsers) return null;
+  if (data.loading) {
+    return (<div class="ui active inverted dimmer">
+      <div class="ui text loader">Loading</div>
+    </div>)
+  }
   let people = data.allUsers.edges.map(({ node }) => node);
   let skills = data.allSkills.edges.map(({ node }) => node);
   people.sort(({ firstName: a }, { firstName: b }) => a < b ? -1 : a > b ? 1 : 0)
   return <table className="ui striped selectable definition table">
     <tbody>
-      <tr><th />{skills.map(({ name, id }) => <th key={id}>{name}</th>)}</tr>
+      <tr className="sticky">
+        <th />
+        {skills.map(({ name, id }) => <th key={id}>{name}</th>)}
+      </tr>
       {people.map(person =>
         <PersonSkillRow key={person.id}
           person={person}

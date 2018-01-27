@@ -24,9 +24,10 @@ const EditPerson = ({ person, client, data }) => {
         <h1 className="ui dividing header">{person.firstName} {person.lastName}</h1>
         <table className="ui large striped table">
             <tbody>
-                <tr><th />
+                <tr className="sticky">
+                    <th />
                     <th>Experience</th>
-                    <th>Want to Learn</th>
+                    <th>Desire to Learn</th>
                 </tr>
                 {personSkills.map(({ skill, personSkill }) =>
                     <tr key={`${person.id}-${skill.id}`}>

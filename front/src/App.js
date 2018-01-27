@@ -19,12 +19,12 @@ class App extends Component {
         return (
             <div className="ui container">
                 <h1 className="ui dividing header">People Skillz Finder</h1>
-                <Instructions />
-                <Legend />
-                <div className="ui two column grid" >
-                    <PersonSkillTableContainer className="column" onRowClick={person => this.selectPerson(person)} />
-                    {person && <EditPersonContainer person={person} />}
+                <div className="ui message">
+                    <Instructions />
+                    <Legend />
                 </div>
+                <PersonSkillTableContainer className="column" onRowClick={person => this.selectPerson(person)} />
+                {person && <EditPersonContainer person={person} />}
             </div>
         );
     }
@@ -41,13 +41,24 @@ const Instructions = () =>
 
 
 const Legend = () =>
-    <div>
-        <Rating rating={5} className="inline" />
-        <p> = knows X.</p>
-        <Rating rating={5} className="inline" icon="student" />
-        <p> = wants to learn X.</p>
-        <div style={{ height: '20px' }} />
-    </div>
+    <table>
+        <tr>
+            <td><Rating rating={5} className="inline" /></td>
+            <td>very experienced</td>
+        </tr>
+        <tr>
+            <td><Rating rating={1} className="inline" /></td>
+            <td>knows a little</td>
+        </tr>
+        <tr>
+            <td><Rating rating={5} className="inline" icon="student" /></td>
+            <td>really wants to learn</td>
+        </tr>
+        <tr>
+            <td><Rating rating={0} className="inline" /></td>
+            <td>doesn't know / doesn't care</td>
+        </tr>
+    </table>
 
 
 export default App;
