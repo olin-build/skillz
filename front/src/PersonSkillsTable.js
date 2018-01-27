@@ -5,7 +5,7 @@ import { Rating } from './Rating.js'
 import { getPersonSkillRecords } from './EditPerson.js'
 import gql from 'graphql-tag'
 
-export const PersonSkillsTable = ({ data, onRowClick }) => {
+export const PersonSkillsTable = ({ data, editablePerson = null, onRowClick }) => {
   if (data.error) {
     return (<div className="ui warning icon message">
       <i className="warning sign icon"></i>
@@ -35,49 +35,55 @@ export const PersonSkillsTable = ({ data, onRowClick }) => {
         <PersonSkillRow key={person.id}
           person={person}
           skills={skills}
+          editable={person === editablePerson}
           onClick={() => onRowClick(person)}
         />)}
     </tbody>
   </table>)
 }
-export const PersonSkillRow = ({ person, skills, onClick }) => {
+export const PersonSkillRow = ({ person, skills, onClick, editable }) => {
   const personSkillRecords = getPersonSkillRecords(person, skills);
   return (<tr onClick={onClick}>
     <th>
       <div>{person.firstName}</div>
-      <div className="right aligned">{person.lastName}</div></th>
+      <div className="right aligned">{person.lastName}</div>
+      {editable && <div className="ui pointing below label">
+        Edit your stars in the table below.
+      </div>}
+    </th>
     {personSkillRecords.map(({ skill, personSkill }) =>
       <td key={skill.id} className="center aligned">
         <Rating rating={personSkill.experience} icon="star" />
         <Rating rating={personSkill.desire} icon="student" />
-      </td>)}
-  </tr>)
+      </td>
+    )}
+  </tr >)
 };
 
 export const personSkillsQuery = gql`
 query {
-  allUsers {
-      edges {
-        node {
-          id
+          allUsers {
+        edges {
+          node {
+        id
           firstName
           lastName
           userSkillsByUserId {
-            edges {
-              node {
-                id
+          edges {
+        node {
+          id
                 skillId
-                experience
+        experience
                 desire
                 skillBySkillId {name}
-              }
+        }
             }
           }
         }
       }
     }
     allSkills(orderBy: NAME_ASC) {
-      edges {
+          edges {
         node {
           id
           name

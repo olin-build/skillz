@@ -38,8 +38,8 @@ const Instructions = () =>
         <p>
             Use this tool to find people who know or want to learn X. </p>
         <p>
-            Click a row to edit it. (Please only edit yourself or with permission!)
-            A panel will appear below the table.</p>
+            Click on your row to edit your skills and interests. (Please only edit yourself or with permission!)
+        </p>
     </div>
 
 
