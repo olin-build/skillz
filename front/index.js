@@ -11,7 +11,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import gql from 'graphql-tag'
 
-const API_SERVER_URL = process.env.API_SERVER_URL !== true ? process.env.API_SERVER_URL : 'http://127.0.0.1:5000/';
+const API_SERVER_URL = process.env.API_SERVER_URL || 'http://127.0.0.1:5000/';
 
 const client = new ApolloClient({
     link: new HttpLink({ uri: API_SERVER_URL + 'graphql' }),

@@ -4,7 +4,8 @@ import { graphql, withApollo } from 'react-apollo';
 import { EditRating } from './Rating.js'
 import gql from 'graphql-tag'
 
-const API_SERVER_URL = process.env.API_SERVER_URL !== true ? process.env.API_SERVER_URL : 'http://127.0.0.1:5000/';
+// TODO use a provider pattern to read this from init or app
+const API_SERVER_URL = process.env.API_SERVER_URL || 'http://127.0.0.1:5000/';
 
 const EditPerson = ({ person, skills, client, mutate }) => {
     let personSkills = getPersonSkillRecords(person, skills);
