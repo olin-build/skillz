@@ -5,7 +5,7 @@ import { Rating } from './Rating.js'
 import { getPersonSkillRecords } from './Person.js'
 import gql from 'graphql-tag'
 
-export const PersonSkillsTable = ({ data }) => {
+export const PersonSkillsTable = ({ data, onRowClick }) => {
   if (data.error) {
     return (<div className="ui warning icon message">
       <i class="warning icon"></i>
@@ -26,7 +26,7 @@ export const PersonSkillsTable = ({ data }) => {
         <PersonSkillRow key={person.id}
           person={person}
           skills={skills}
-          onClick={() => this.props.onRowClick(person)}
+          onClick={() => onRowClick(person)}
         />)}
     </tbody>
   </table>

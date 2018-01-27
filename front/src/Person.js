@@ -7,7 +7,8 @@ import gql from 'graphql-tag'
 // TODO use a provider pattern to read this from init or app
 const API_SERVER_URL = process.env.API_SERVER_URL || 'http://127.0.0.1:5000/';
 
-const EditPerson = ({ person, skills, client, mutate }) => {
+const EditPerson = ({ person, client, data }) => {
+    let skills = data.allSkills.edges.map(({ node }) => node);
     let personSkills = getPersonSkillRecords(person, skills);
     function setRating(skill, key, level) {
         const url = `${API_SERVER_URL}person/${person.id}/skill/${skill.id}`;
@@ -48,7 +49,17 @@ const EditPerson = ({ person, skills, client, mutate }) => {
     );
 }
 
-export const EditPersonContainer = EditPerson;
+export const skillsQuery = gql`
+query {
+    allSkills(orderBy: NAME_ASC) {
+      edges {
+        node {
+          id
+          name
+        }
+      }
+    }
+}`;
 
 export function getPersonSkillRecords(person, skills) {
     let personSkillsById = Object();
@@ -59,3 +70,9 @@ export function getPersonSkillRecords(person, skills) {
         skill, personSkill: personSkillsById[skill.id] || {}
     }));
 }
+
+export const EditPersonContainer = graphql(skillsQuery, {
+    options: {
+        errorPolicy: 'all'
+    }
+})(withApollo(EditPerson));
