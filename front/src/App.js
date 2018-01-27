@@ -2,7 +2,7 @@ import { EditRating, Rating } from './Rating.js'
 import React, { Component } from 'react';
 import { graphql, withApollo } from 'react-apollo';
 
-import { EditPersonContainer } from './Person.js'
+import { EditPersonContainer } from './EditPerson.js'
 import { PersonSkillTableContainer } from './PersonSkillsTable.js'
 import gql from 'graphql-tag'
 

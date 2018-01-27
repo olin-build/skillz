@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { graphql, withApollo } from 'react-apollo';
 
 import { Rating } from './Rating.js'
-import { getPersonSkillRecords } from './Person.js'
+import { getPersonSkillRecords } from './EditPerson.js'
 import gql from 'graphql-tag'
 
 export const PersonSkillsTable = ({ data, onRowClick }) => {
