@@ -17,16 +17,12 @@ describe('Rating', () => {
             expect(tree).toMatchSnapshot();
         });
     });
-    // test('has the right number of stars', () => {
-    //     // Render a checkbox with label in the document
-    //     const checkbox = shallow(<CheckboxWithLabel labelOn="On" labelOff="Off" />);
-
-    //     expect(checkbox.text()).toEqual('Off');
-
-    //     checkbox.find('input').simulate('change');
-
-    //     expect(checkbox.text()).toEqual('On');
-    // });
+    test('renders {rating} `.icon.star`', () => {
+        // This is functionally redundant to the snapshot tests, but
+        // it communicates the intent.
+        const rating = shallow(<Rating rating={2} />);
+        expect(rating.find('.icon.star')).toHaveLength(2);
+    });
 })
 
 

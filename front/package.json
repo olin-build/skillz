@@ -19,6 +19,8 @@
   "devDependencies": {
     "apollo-client-preset": "^1.0.6",
     "babel-preset-env": "^1.6.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "graphql": "^0.12.3",
     "graphql-tag": "^2.6.1",
     "jest": "^22.1.4",
@@ -26,5 +28,8 @@
     "react-apollo": "^2.0.4",
     "react-dom": "^16.2.0",
     "react-test-renderer": "^16.2.0"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "./setupTests.js"
   }
 }
