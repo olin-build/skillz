@@ -6,6 +6,15 @@ import { getPersonSkillRecords } from './Person.js'
 import gql from 'graphql-tag'
 
 export const PersonSkillsTable = ({ data }) => {
+  if (data.error) {
+    return (<div className="ui warning icon message">
+      <i class="warning icon"></i>
+      <div class="content">
+        <div className="header"> Server Error </div>
+        <p>{String(data.error)}</p>
+      </div>
+    </div>)
+  }
   if (!data || !data.allUsers) return null;
   let people = data.allUsers.edges.map(({ node }) => node);
   let skills = data.allSkills.edges.map(({ node }) => node);
@@ -69,4 +78,8 @@ query {
 }`;
 
 
-export const PersonSkillTableContainer = graphql(personSkillsQuery)(PersonSkillsTable);
+export const PersonSkillTableContainer = graphql(personSkillsQuery, {
+  options: {
+    errorPolicy: 'all'
+  }
+})(PersonSkillsTable);
