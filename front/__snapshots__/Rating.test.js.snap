@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EditRating rating 0 matches snapshot 1`] = `
+exports[`EditRating matches snapshots: rating=0 1`] = `
 <div
   className="my-rating"
 >
@@ -31,7 +31,7 @@ exports[`EditRating rating 0 matches snapshot 1`] = `
 </div>
 `;
 
-exports[`EditRating rating 1 matches snapshot 1`] = `
+exports[`EditRating matches snapshots: rating=1 1`] = `
 <div
   className="my-rating"
 >
@@ -62,7 +62,7 @@ exports[`EditRating rating 1 matches snapshot 1`] = `
 </div>
 `;
 
-exports[`EditRating rating 5 matches snapshot 1`] = `
+exports[`EditRating matches snapshots: rating=5 1`] = `
 <div
   className="my-rating"
 >
@@ -93,7 +93,7 @@ exports[`EditRating rating 5 matches snapshot 1`] = `
 </div>
 `;
 
-exports[`EditRating rating null matches snapshot 1`] = `
+exports[`EditRating matches snapshots: rating=null 1`] = `
 <div
   className="my-rating"
 >
@@ -124,13 +124,13 @@ exports[`EditRating rating null matches snapshot 1`] = `
 </div>
 `;
 
-exports[`Rating 0 matches snapshot 1`] = `
+exports[`Rating matches snapshots: rating=0 1`] = `
 <div
   className="compact my-rating"
 />
 `;
 
-exports[`Rating 1 matches snapshot 1`] = `
+exports[`Rating matches snapshots: rating=1 1`] = `
 <div
   className="compact my-rating"
 >
@@ -140,7 +140,7 @@ exports[`Rating 1 matches snapshot 1`] = `
 </div>
 `;
 
-exports[`Rating 5 matches snapshot 1`] = `
+exports[`Rating matches snapshots: rating=5 1`] = `
 <div
   className="compact my-rating"
 >
@@ -162,7 +162,7 @@ exports[`Rating 5 matches snapshot 1`] = `
 </div>
 `;
 
-exports[`Rating null matches snapshot 1`] = `
+exports[`Rating matches snapshots: rating=null 1`] = `
 <div
   className="compact my-rating"
 />

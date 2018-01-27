@@ -5,16 +5,13 @@ import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
 describe('Rating', () => {
-
-
-    [null, 0, 1, 5].forEach(rating => {
-        test(`${rating} matches snapshot`, () => {
-
+    test(`matches snapshots`, () => {
+        [null, 0, 1, 5].forEach(rating => {
             const component = renderer.create(
                 <Rating rating={rating} />
             );
             let tree = component.toJSON();
-            expect(tree).toMatchSnapshot();
+            expect(tree).toMatchSnapshot(`rating=${rating}`);
         });
     });
     test('renders {rating} `.icon.star`', () => {
@@ -27,13 +24,13 @@ describe('Rating', () => {
 
 
 describe('EditRating', () => {
-    [null, 0, 1, 5].forEach(rating => {
-        test(`rating ${rating} matches snapshot`, () => {
+    test(`matches snapshots`, () => {
+        [null, 0, 1, 5].forEach(rating => {
             const component = renderer.create(
                 <EditRating rating={rating} />
             );
             let tree = component.toJSON();
-            expect(tree).toMatchSnapshot();
+            expect(tree).toMatchSnapshot(`rating=${rating}`);
         });
     })
 })
