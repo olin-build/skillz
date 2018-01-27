@@ -16,20 +16,19 @@
     padding: 0;
 }
 
-.my-rating .icon.star {
-    color: gold;
-}
-
-.my-rating .icon.heart {
-    color: red;
-}
-
-.my-rating .icon.empty.student {
-    color: #ccc;
-}
-
-.my-rating x.icon.circle {
-    color: #888;
+.my-rating {
+    .icon.star {
+        color: gold;
+    }
+    .icon.heart {
+        color: red;
+    }
+    .icon.empty.student {
+        color: #ccc;
+    }
+    x.icon.circle {
+        color: #888;
+    }
 }
 
 .inline {

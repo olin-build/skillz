@@ -24,10 +24,12 @@
     "graphql": "^0.12.3",
     "graphql-tag": "^2.6.1",
     "jest": "^22.1.4",
+    "node-sass": "^4.7.2",
     "poi": "^9.6.13",
     "react-apollo": "^2.0.4",
     "react-dom": "^16.2.0",
-    "react-test-renderer": "^16.2.0"
+    "react-test-renderer": "^16.2.0",
+    "sass-loader": "^6.0.6"
   },
   "jest": {
     "rootDir": "src",
