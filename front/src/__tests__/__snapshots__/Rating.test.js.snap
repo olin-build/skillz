@@ -5,27 +5,27 @@ exports[`EditRating matches snapshots: rating=0 1`] = `
   className="my-rating"
 >
   <i
-    className="small circle icon"
+    className=" circle icon"
     onClick={[Function]}
   />
   <i
-    className="icon small empty star"
+    className=" empty star icon"
     onClick={[Function]}
   />
   <i
-    className="icon small empty star"
+    className=" empty star icon"
     onClick={[Function]}
   />
   <i
-    className="icon small empty star"
+    className=" empty star icon"
     onClick={[Function]}
   />
   <i
-    className="icon small empty star"
+    className=" empty star icon"
     onClick={[Function]}
   />
   <i
-    className="icon small empty star"
+    className=" empty star icon"
     onClick={[Function]}
   />
 </div>
@@ -36,27 +36,27 @@ exports[`EditRating matches snapshots: rating=1 1`] = `
   className="my-rating"
 >
   <i
-    className="small circle icon thin"
+    className=" circle icon thin"
     onClick={[Function]}
   />
   <i
-    className="icon small star"
+    className=" star icon"
     onClick={[Function]}
   />
   <i
-    className="icon small empty star"
+    className=" empty star icon"
     onClick={[Function]}
   />
   <i
-    className="icon small empty star"
+    className=" empty star icon"
     onClick={[Function]}
   />
   <i
-    className="icon small empty star"
+    className=" empty star icon"
     onClick={[Function]}
   />
   <i
-    className="icon small empty star"
+    className=" empty star icon"
     onClick={[Function]}
   />
 </div>
@@ -67,27 +67,27 @@ exports[`EditRating matches snapshots: rating=5 1`] = `
   className="my-rating"
 >
   <i
-    className="small circle icon thin"
+    className=" circle icon thin"
     onClick={[Function]}
   />
   <i
-    className="icon small star"
+    className=" star icon"
     onClick={[Function]}
   />
   <i
-    className="icon small star"
+    className=" star icon"
     onClick={[Function]}
   />
   <i
-    className="icon small star"
+    className=" star icon"
     onClick={[Function]}
   />
   <i
-    className="icon small star"
+    className=" star icon"
     onClick={[Function]}
   />
   <i
-    className="icon small star"
+    className=" star icon"
     onClick={[Function]}
   />
 </div>
@@ -98,27 +98,27 @@ exports[`EditRating matches snapshots: rating=null 1`] = `
   className="my-rating"
 >
   <i
-    className="small circle icon"
+    className=" circle icon"
     onClick={[Function]}
   />
   <i
-    className="icon small empty star"
+    className=" empty star icon"
     onClick={[Function]}
   />
   <i
-    className="icon small empty star"
+    className=" empty star icon"
     onClick={[Function]}
   />
   <i
-    className="icon small empty star"
+    className=" empty star icon"
     onClick={[Function]}
   />
   <i
-    className="icon small empty star"
+    className=" empty star icon"
     onClick={[Function]}
   />
   <i
-    className="icon small empty star"
+    className=" empty star icon"
     onClick={[Function]}
   />
 </div>
@@ -135,7 +135,7 @@ exports[`Rating matches snapshots: rating=1 1`] = `
   className="compact my-rating"
 >
   <i
-    className="icon small star"
+    className="tiny icon star"
   />
 </div>
 `;
@@ -145,19 +145,19 @@ exports[`Rating matches snapshots: rating=5 1`] = `
   className="compact my-rating"
 >
   <i
-    className="icon small star"
+    className="tiny icon star"
   />
   <i
-    className="icon small star"
+    className="tiny icon star"
   />
   <i
-    className="icon small star"
+    className="tiny icon star"
   />
   <i
-    className="icon small star"
+    className="tiny icon star"
   />
   <i
-    className="icon small star"
+    className="tiny icon star"
   />
 </div>
 `;

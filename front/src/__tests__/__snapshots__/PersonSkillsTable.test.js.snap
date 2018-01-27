@@ -5,7 +5,9 @@ exports[`PersonSkillsTable matches snapshot 1`] = `
   className="ui striped selectable definition table"
 >
   <tbody>
-    <tr>
+    <tr
+      className="sticky"
+    >
       <th />
       <th>
         React

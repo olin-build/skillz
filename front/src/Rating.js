@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export const Rating = ({ rating, icon }) =>
     <div className="compact my-rating">
         {Array.apply(null, Array(rating || 0)).map((_, i) =>
-            <i key={i} className={"icon small " + (icon || 'star')} />)}
+            <i key={i} className={"tiny icon " + (icon || 'star')} />)}
     </div>
 
 export class EditRating extends Component {
@@ -20,15 +20,16 @@ export class EditRating extends Component {
         let { props, state, onRating } = this;
         const icon = props.icon || 'star';
         const rating = state.rating || 0;
+        const size = "";
         return (
             <div className="my-rating">
-                <i className={"small circle icon" + (rating ? " thin" : "")}
+                <i className={`${size} circle icon` + (rating ? " thin" : "")}
                     onClick={() => onRating(null)} />
                 {rating > 0 && Array.apply(null, Array(rating)).map((_, i) =>
-                    <i key={i} className={"icon small " + icon}
+                    <i key={i} className={`${size} ${icon} icon`}
                         onClick={() => onRating(i + 1)} />)}
                 {rating < 5 && Array.apply(null, Array(5 - rating)).map((_, i) =>
-                    <i key={i + rating} className={"icon small empty " + icon}
+                    <i key={i + rating} className={`${size} empty ${icon} icon`}
                         onClick={() => onRating(i + 1 + rating)} />)}
             </div>)
     }
