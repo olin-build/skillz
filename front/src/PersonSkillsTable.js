@@ -11,7 +11,7 @@ export const PersonSkillsTable = ({ data, editablePerson = null, onRowClick }) =
             <i className="warning sign icon"></i>
             <div className="content">
                 <div className="header"> Server Error </div>
-                <p>{String('data.error')}</p>
+                <p>{String(data.error)}</p>
             </div>
         </div>)
     }
