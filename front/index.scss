@@ -40,7 +40,19 @@ container {
     }
 }
 
+body {
+    position: relative
+}
+
+#github-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: #888;
+}
+
 .last-name {
-    color: #aaa;
+    color: #ccc;
     padding-right: 2px;
+    font-size: 1.25em;
 }

@@ -17,17 +17,23 @@ class App extends Component {
     render() {
         const { person } = this.state;
         return (
-            <div className="ui container">
-                <h1 className="ui dividing header">People Skillz Finder</h1>
-                <div className="ui message">
-                    <Instructions />
-                    <Legend />
+            <div>
+                <a id="github-icon" href="https://github.com/olin-build/skillz/"
+                    target="_blank">
+                    <i className="huge github icon" />
+                </a>
+                <div className="ui container">
+                    <h1 className="ui dividing header">People Skillz Finder</h1>
+                    <div className="ui message">
+                        <Instructions />
+                        <Legend />
+                    </div>
+                    <PersonSkillsTableContainer className="column"
+                        editablePerson={person}
+                        onRowClick={person => this.selectPerson(person)}
+                    />
+                    {person && <EditPersonContainer person={person} />}
                 </div>
-                <PersonSkillsTableContainer className="column"
-                    editablePerson={person}
-                    onRowClick={person => this.selectPerson(person)}
-                />
-                {person && <EditPersonContainer person={person} />}
             </div>
         );
     }
