@@ -14,7 +14,12 @@
   "license": "MIT",
   "scripts": {
     "start": "babel-node server.js --presets env",
-    "postgraphql": "postgraphql -c postgres://skillz@localhost/skillz --cors"
+    "postgraphql": "postgraphql -c postgres://skillz@localhost/skillz --cors",
+    "db:migrate": "node-pg-migrate up",
+    "db:migrate:down": "node-pg-migrate down",
+    "db:migrate:redo": "node-pg-migrate redo"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "node-pg-migrate": "^2.17.0"
+  }
 }
