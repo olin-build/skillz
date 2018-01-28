@@ -1,0 +1,20 @@
+{
+  "name": "skillz",
+  "description": "People skills finder",
+  "version": "0.1.0",
+  "author": "Oliver Steele <oliver.steele@olin.edu>",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "(cd back && yarn deploy) && (cd front && yarn deploy)",
+    "test": "jest"
+  },
+  "jest": {
+    "projects": [
+      "front",
+      "back"
+    ]
+  },
+  "devDependencies": {
+    "jest": "^22.1.4"
+  }
+}
