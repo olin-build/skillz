@@ -20,6 +20,6 @@ Visit <http://localhost:1234>.
 
 ## Deploy
 
-(First time:) `netlify deploy`. Answer `distr` for the distribution directory.
+(First time:) `netlify deploy`. Answer `dist` for the distribution directory.
 
 Subsequently: `yarn deploy`

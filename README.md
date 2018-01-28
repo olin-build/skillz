@@ -17,7 +17,7 @@ globally.
 
 ## Deploy
 
-Deployment assumes `./front` folder is configured to deploy `distr` to Netlify,
+Deployment assumes `./front` folder is configured to deploy `dist` to Netlify,
 and the overall project is associated with a Heroku app.
 
 `yarn deploy`
