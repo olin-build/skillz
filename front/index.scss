@@ -56,20 +56,24 @@ body {
 
 .person-name {
     position: relative;
-}
-
-.first-name {
-    color: #555;
-    font-size: 1.5em;
-    position: relative;
-    padding-left: 2px;
-    z-index: 1;
-}
-
-.last-name {
-    color: #ccc;
-    font-size: 1.25em;
-    padding-right: 2px;
-    position: relative;
-    top: -0.25em;
+    .first-name {
+        color: #555;
+        font-size: 1.5em;
+        position: relative;
+        padding-left: 2px;
+        z-index: 1;
+    }
+    .last-name {
+        color: #ccc;
+        font-size: 1.25em;
+        padding-right: 2px;
+        position: relative;
+        top: -0.25em;
+    }
+    .ui.label {
+        position: absolute;
+        z-index: 2;
+        left: 2px;
+        top: 5px;
+    }
 }

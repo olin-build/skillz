@@ -21,8 +21,12 @@ exports[`PersonSkillsTable matches snapshot 1`] = `
     <tr
       onClick={[Function]}
     >
-      <th>
-        <div>
+      <th
+        className="person-name"
+      >
+        <div
+          className="first-name"
+        >
           Laszlo
         </div>
         <div

@@ -12,7 +12,7 @@ class App extends Component {
         this.state = { person: null };
     }
     selectPerson(person) {
-        this.setState({ person });
+        this.setState({ person: person === this.state.person ? null : person });
     }
     render() {
         const { person } = this.state;
