@@ -44,10 +44,10 @@ export const PersonSkillsTable = ({ data, editablePerson = null, onRowClick }) =
 export const PersonSkillRow = ({ person, skills, onClick, editable }) => {
     const personSkillRecords = getPersonSkillRecords(person, skills);
     return (<tr onClick={onClick}>
-        <th>
-            <div>{person.firstName}</div>
+        <th className="person-name">
+            <div className="first-name">{person.firstName}</div>
             <div className="right aligned last-name">{person.lastName}</div>
-            {editable && <div className="ui pointing below label">
+            {editable && <div className="ui label">
                 Edit your stars in the table below.
       </div>}
         </th>

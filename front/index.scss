@@ -51,8 +51,21 @@ body {
     color: #888;
 }
 
+.person-name {
+    position: relative;
+}
+
+.first-name {
+    position: relative;
+    padding-left: 2px;
+    z-index: 50;
+}
+
 .last-name {
+    z-index: 20;
     color: #ccc;
+    font-size: 1.5em;
     padding-right: 2px;
-    font-size: 1.25em;
+    position: relative;
+    top: -0.5em;
 }
