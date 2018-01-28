@@ -20,7 +20,7 @@ export const PersonSkillsTable = ({ data, editablePerson = null, onRowClick }) =
             <div className="ui text loader">Loading</div>
         </div>)
     }
-    let people = data.allUsers.edges.map(({ node }) => node);
+    let people = data.allPeople.edges.map(({ node }) => node);
     let skills = data.allSkills.edges.map(({ node }) => node);
     people.sort(({ firstName: a }, { firstName: b }) => a < b ? -1 : a > b ? 1 : 0)
     return (<table className="ui striped selectable definition table">
@@ -62,13 +62,13 @@ export const PersonSkillRow = ({ person, skills, onClick, editable }) => {
 
 export const personSkillsQuery = gql`
 query {
-    allUsers {
+    allPeople {
         edges {
           node {
         id
           firstName
           lastName
-          userSkillsByUserId {
+          personSkillsByPersonId {
           edges {
         node {
           id

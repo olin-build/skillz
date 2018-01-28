@@ -70,7 +70,7 @@ query {
 
 export function getPersonSkillRecords(person, skills) {
     let personSkillsById = Object();
-    person.userSkillsByUserId.edges.forEach(({ node }) =>
+    person.personSkillsByPersonId.edges.forEach(({ node }) =>
         personSkillsById[node.skillId] = node
     );
     return skills.map(skill => ({

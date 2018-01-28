@@ -26,7 +26,7 @@ exports[`PersonSkillsTable matches snapshot 1`] = `
           Laszlo
         </div>
         <div
-          className="right aligned"
+          className="right aligned last-name"
         >
           Toth
         </div>

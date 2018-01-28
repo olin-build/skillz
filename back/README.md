@@ -13,7 +13,7 @@ psql skillz < config/schema.sql
 DATABASE_URL=postgres://skillz@localhost/skillz yarn db:migrate
 ```
 
-For development, run `psql skillz < data/dev_data.sql` to seed the `user` table.
+For development, run `psql skillz < data/dev_data.sql` to seed the `person` table.
 
 
 Run `yarn start` to start the API server.

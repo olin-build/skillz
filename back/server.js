@@ -58,8 +58,8 @@ app.post('/person/:personId/skill/:skillId/', async (req, res) => {
     let data = req.body
     // console.info('set', req.params, data)
     const { update, insert, vars } = constructQuery({
-        tableName: 'user_skill',
-        where: { user_id: personId, skill_id: skillId },
+        tableName: 'person_skill',
+        where: { person_id: personId, skill_id: skillId },
         cols: ['experience', 'desire'],
         data
     })

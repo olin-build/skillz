@@ -4,14 +4,14 @@ import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
 const personSkillsData = {
-    allUsers: {
+    allPeople: {
         edges: [
             {
                 node: {
                     id: 1,
                     firstName: "Laszlo",
                     lastName: "Toth",
-                    userSkillsByUserId: {
+                    personSkillsByPersonId: {
                         edges: [
                             {
                                 node: {
