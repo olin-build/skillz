@@ -32,15 +32,15 @@ app.get('/', (req, res) => res.send('Hello World!'))
 app.post('/person/:personId/skill/:skillId/', async (req, res) => {
     let { personId, skillId } = req.params
     let data = req.body
-    const { update, insert, vars } = constructQuery({
+    const { update, insert, params } = constructQuery({
         tableName: 'person_skill',
         where: { person_id: personId, skill_id: skillId },
         cols: ['experience', 'interest'],
         data
     })
-    const { rowCount } = await client.query(update, vars)
+    const { rowCount } = await client.query(update, params)
     if (rowCount == 0) {
-        await client.query(insert, vars)
+        await client.query(insert, params)
     }
     res.json(data)
 })

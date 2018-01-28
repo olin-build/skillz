@@ -3,28 +3,28 @@
 // FIXME callers should use an upsert, instead
 export function constructQuery({ tableName, where, cols, data }) {
     var updates = []
-    var whereClause = []
-    var vars = []
+    var whereTests = []
+    var params = []
     Object.keys(where).forEach(name => {
-        vars.push(where[name])
-        whereClause.push(`${name}=$${vars.length}`)
+        params.push(where[name])
+        whereTests.push(`${name}=$${params.length}`)
     })
     cols.forEach(name => {
         const val = data[name]
         if (val !== undefined) {
-            vars.push(val)
-            updates.push(`${name}=$${vars.length}`)
+            params.push(val)
+            updates.push(`${name}=$${params.length}`)
         }
     })
     const update = collapseWhitespace(`UPDATE ${tableName}
         SET ${updates.join(', ')}
-        WHERE ${whereClause.join(' AND ')}
+        WHERE ${whereTests.join(' AND ')}
         `)
     const insert = collapseWhitespace(`INSERT INTO ${tableName}
-        (${whereClause.concat(updates).join(', ').replace(/=\$\d+/g, '')})
-        VALUES (${whereClause.concat(updates).map((_, i) => '$' + (i + 1)).join(', ')})
+        (${whereTests.concat(updates).join(', ').replace(/=\$\d+/g, '')})
+        VALUES (${whereTests.concat(updates).map((_, i) => '$' + (i + 1)).join(', ')})
         `)
-    return { update, insert, vars }
+    return { update, insert, params }
 }
 
 const collapseWhitespace = (str) =>
