@@ -17,8 +17,17 @@ yarn db:migrate
 
 For development, run `psql skillz < data/dev_data.sql` to seed the `person` table.
 
+## Develop
+
 Run `yarn start` to start the API server.
+
 Visit <http://localhost:3000/graphiql> to browse the data.
+
+## Test
+
+`yarn test`
+
+`jest --watch` to test in watch mode (recommended).
 
 ## Working with Migrations
 
@@ -38,8 +47,3 @@ node-pg-migrate red  # apply the down migration, and then the up one again
 ## Colophon
 
 <https://github.com/postgraphql/postgraphql>
-
-## License
-
-MIT
-
