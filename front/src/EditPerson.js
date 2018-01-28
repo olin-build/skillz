@@ -45,9 +45,9 @@ const EditPerson = ({ person, client, data }) => {
                         </td>
                         <td>
                             <EditRating
-                                rating={personSkill.desire}
+                                rating={personSkill.interest}
                                 icon="student"
-                                onRating={r => setRating(skill, 'desire', r)} />
+                                onRating={r => setRating(skill, 'interest', r)} />
                         </td>
                     </tr>)}
             </tbody>

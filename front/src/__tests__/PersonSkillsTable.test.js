@@ -18,7 +18,7 @@ const personSkillsData = {
                                     id: 3,
                                     skillId: 1,
                                     experience: 5,
-                                    desire: 3,
+                                    interest: 3,
                                     note: null,
                                     skillBySkillId: {
                                         name: "React"

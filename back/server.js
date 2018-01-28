@@ -60,7 +60,7 @@ app.post('/person/:personId/skill/:skillId/', async (req, res) => {
     const { update, insert, vars } = constructQuery({
         tableName: 'person_skill',
         where: { person_id: personId, skill_id: skillId },
-        cols: ['experience', 'desire'],
+        cols: ['experience', 'interest'],
         data
     })
     const { rowCount } = await client.query(update, vars)

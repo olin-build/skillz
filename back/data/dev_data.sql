@@ -12,7 +12,7 @@ COPY "person" (id, first_name, last_name, github_login, homepage_url, bio, prono
 -- Data for Name: person_skill; Type: TABLE DATA; Schema: public; Owner: skillz
 --
 
-COPY person_skill (id, person_id, skill_id, experience, desire, note, instructor) FROM stdin;
+COPY person_skill (id, person_id, skill_id, experience, interest, note, instructor) FROM stdin;
 3	1	1	5	3	\N	t
 12	1	6	3	\N	\N	\N
 17	1	11	3	\N	\N	\N

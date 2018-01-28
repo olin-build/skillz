@@ -54,7 +54,7 @@ export const PersonSkillRow = ({ person, skills, onClick, editable }) => {
         {personSkillRecords.map(({ skill, personSkill }) =>
             <td key={skill.id} className="center aligned">
                 <Rating rating={personSkill.experience} icon="star" />
-                <Rating rating={personSkill.desire} icon="student" />
+                <Rating rating={personSkill.interest} icon="student" />
             </td>
         )}
     </tr >)
@@ -74,7 +74,7 @@ query {
           id
                 skillId
         experience
-                desire
+                interest
                 skillBySkillId {name}
         }
             }
