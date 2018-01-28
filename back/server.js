@@ -1,5 +1,6 @@
 import { Client, Pool } from 'pg'
 
+import { constructQuery } from './orm'
 import express from 'express'
 import helmet from 'helmet'
 import postgraphql from 'postgraphql'
@@ -24,32 +25,6 @@ app.use(function (req, res, next) {
     next();
 })
 app.use(postgraphql(DATABASE_URL, { graphiql: true }))
-
-function constructQuery({ tableName, where, cols, data }) {
-    var updates = []
-    var whereClause = []
-    var vars = []
-    Object.keys(where).forEach(name => {
-        vars.push(where[name])
-        whereClause.push(`${name}=$${vars.length}`)
-    })
-    cols.forEach(name => {
-        const val = data[name]
-        if (val !== undefined) {
-            vars.push(val)
-            updates.push(`${name}=$${vars.length}`)
-        }
-    })
-    const update = `UPDATE ${tableName}
-        SET ${updates.join(', ')}
-        WHERE ${whereClause.join(' AND ')}
-        `.replace(/\n */g, ' ')
-    const insert = `INSERT INTO ${tableName}
-        (${whereClause.concat(updates).join(', ').replace(/=\$\d+/g, '')})
-        VALUES (${whereClause.concat(updates).map((_, i) => '$' + (i + 1)).join(', ')})
-        `.replace(/\n */g, ' ')
-    return { update, insert, vars }
-}
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
