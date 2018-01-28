@@ -15,6 +15,7 @@ client.connect().catch(err => {
 })
 
 const app = express()
+export default app;
 
 app.use(helmet())
 app.use(express.json());
@@ -31,7 +32,6 @@ app.get('/', (req, res) => res.send('Hello World!'))
 app.post('/person/:personId/skill/:skillId/', async (req, res) => {
     let { personId, skillId } = req.params
     let data = req.body
-    // console.info('set', req.params, data)
     const { update, insert, vars } = constructQuery({
         tableName: 'person_skill',
         where: { person_id: personId, skill_id: skillId },
@@ -45,4 +45,6 @@ app.post('/person/:personId/skill/:skillId/', async (req, res) => {
     res.json(data)
 })
 
-app.listen(PORT, () => console.log(`API server listening on port ${PORT}.`))
+if (require.main === module) {
+    app.listen(PORT, () => console.log(`API server listening on port ${PORT}.`))
+}

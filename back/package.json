@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "jest": "^22.1.4",
-    "node-pg-migrate": "^2.17.0"
+    "node-pg-migrate": "^2.17.0",
+    "supertest": "^3.0.0"
   }
 }
