@@ -9,9 +9,10 @@ Install PostgreSQL. On macOS: install Homebrew, then `brew install postgresql`.
 ```bash
 createuser skillz
 createdb skillz
+psql skillz < config/schema.sql
 ```
 
-TODO: load the schema.
+For development, run `psql skillz < data/dev_data.sql` to seed the `user` table.
 
 Run `yarn start` to start the API server.
 Visit <http://localhost:3000/graphiql> to browse the data.
