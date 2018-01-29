@@ -55,7 +55,7 @@ const Legend = () =>
             <tr>
                 <td><Rating rating={1} className="inline" /></td>
                 <td>minimal experience</td>
-                <td><Rating rating={5} className="inline" icon="student" /></td>
+                <td><Rating rating={1} className="inline" icon="student" /></td>
                 <td>minimal interest</td>
             </tr>
             <tr>
