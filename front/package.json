@@ -4,7 +4,6 @@
   "version": "0.1.0",
   "author": "Oliver Steele <oliver.steele@olin.edu>",
   "dependencies": {
-    "babel-preset-react": "^6.24.1",
     "jquery": "^3.3.1",
     "react": "^16.2.0",
     "semantic-ui-css": "^2.2.12"
@@ -19,6 +18,7 @@
   "devDependencies": {
     "apollo-client-preset": "^1.0.6",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "graphql": "^0.12.3",
