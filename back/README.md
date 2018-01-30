@@ -17,6 +17,15 @@ yarn db:migrate
 
 For development, run `psql skillz < data/dev_data.sql` to seed the `person` table.
 
+## Configuration
+
+`PORT=500` — HTTP port
+
+`DATABASE_URL=postgres://skillz@localhost/skillz`
+
+`IP_WHITELIST=127.0.0.1` — a comma-separated list of IPs or CDIRs that are
+allowed access to the server APIs.
+
 ## Develop
 
 Run `yarn start` to start the API server.

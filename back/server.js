@@ -1,5 +1,6 @@
 import { Client, Pool } from 'pg'
 
+import { IpFilter } from 'express-ipfilter'
 import { constructQuery } from './orm'
 import express from 'express'
 import helmet from 'helmet'
@@ -7,6 +8,7 @@ import postgraphql from 'postgraphql'
 
 const PORT = process.env.PORT || 5000
 const DATABASE_URL = process.env.DATABASE_URL || 'postgres://skillz@localhost/skillz'
+const IP_WHITELIST = (process.env.IP_WHITELIST || '127.0.0.1').split(',')
 
 const client = new Client({ connectionString: DATABASE_URL })
 
@@ -14,8 +16,8 @@ const client = new Client({ connectionString: DATABASE_URL })
 export const app = express()
 
 app.use(helmet())
-app.use(express.json());
-
+app.use(express.json())
+app.use(IpFilter(IP_WHITELIST, { mode: 'allow' }))
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
