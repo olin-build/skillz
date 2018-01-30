@@ -5,7 +5,9 @@
   "author": "Oliver Steele <oliver.steele@olin.edu>",
   "license": "MIT",
   "scripts": {
-    "deploy": "(cd back && yarn deploy) && (cd front && yarn deploy)",
+    "deploy": "yarn deploy:back && yarn deploy:front",
+    "deploy:front": "cd front && yarn deploy",
+    "deploy:back": "cd back && yarn deploy",
     "test": "jest"
   },
   "jest": {
