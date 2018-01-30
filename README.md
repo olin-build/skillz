@@ -1,4 +1,5 @@
 # Skillz
+[![Build Status](https://travis-ci.org/olin-build/skillz.svg?branch=master)](https://travis-ci.org/olin-build/skillz)
 
 An experimental people skill finder.
 
