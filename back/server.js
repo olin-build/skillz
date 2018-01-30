@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5000
 const DATABASE_URL = process.env.DATABASE_URL || 'postgres://skillz@localhost/skillz'
 const IP_WHITELIST = (process.env.IP_WHITELIST || '127.0.0.1').split(',')
 
-const client = new Client({ connectionString: DATABASE_URL })
+export const client = new Client({ connectionString: DATABASE_URL })
 
 
 export const app = express()
@@ -28,7 +28,12 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 })
-app.use(postgraphql(DATABASE_URL, { graphiql: true }))
+
+// There doesn't appear to be a way to disconnect the postgraphql/pg connection,
+// so postgraphql prevents jest from quitting.
+if (process.env.NODE_ENV != 'test') {
+    app.use(postgraphql(DATABASE_URL, { graphiql: true }))
+}
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
@@ -49,17 +54,13 @@ app.post('/person/:personId/skill/:skillId/', async (req, res) => {
     res.json(data)
 })
 
-export const connect_database = async () => {
+const start = async () => {
     try {
         client.connect()
     } catch (err) {
         console.error(`pg client connect: ${err.error}`)
         process.exit(1)
     }
-}
-
-const start = async () => {
-    await client.connect()
     console.log(`Connected to ${DATABASE_URL}`)
     app.listen(PORT, () => console.log(`API server listening on port ${PORT}.`))
 }

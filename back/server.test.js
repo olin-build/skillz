@@ -1,9 +1,13 @@
-import { app, connect_database } from './server';
+import { app, client } from './server';
 
 import request from 'supertest';
 
 beforeAll(() => {
-    return connect_database();
+    return client.connect();
+});
+
+afterAll(() => {
+    return client.end();
 });
 
 describe('app', () => {
