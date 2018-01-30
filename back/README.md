@@ -28,7 +28,7 @@ allowed access to the server APIs.
 
 ## Develop
 
-Run `yarn start` to start the API server.
+Run `yarn develop` to run the API server in watch mode.
 
 Visit <http://localhost:3000/graphiql> to browse the data.
 

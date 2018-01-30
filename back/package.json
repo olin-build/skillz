@@ -14,7 +14,8 @@
     "postgraphql": "^3.5.4"
   },
   "scripts": {
-    "start": "nodemon ./node_modules/.bin/babel-node server.js --presets env",
+    "start": "babel-node server.js --presets env",
+    "develop": "nodemon ./node_modules/.bin/babel-node server.js --presets env",
     "deploy": "cd .. && git subtree push --prefix back heroku master",
     "postgraphql": "postgraphql -c postgres://skillz@localhost/skillz --cors",
     "db:migrate": "node-pg-migrate up",
