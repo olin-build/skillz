@@ -1,5 +1,10 @@
-import app from './server';
+import { app, connect_database } from './server';
+
 import request from 'supertest';
+
+beforeAll(() => {
+    return connect_database();
+});
 
 describe('app', () => {
     test("GET /home", async () => {
