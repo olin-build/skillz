@@ -4,6 +4,7 @@ import { IpFilter } from 'express-ipfilter'
 import { constructQuery } from './orm'
 import express from 'express'
 import helmet from 'helmet'
+import path from 'path'
 import postgraphql from 'postgraphql'
 
 const PORT = process.env.PORT || 5000
@@ -35,7 +36,8 @@ if (process.env.NODE_ENV != 'test') {
     app.use(postgraphql(DATABASE_URL, { graphiql: true }))
 }
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/', (req, res) =>
+    res.sendFile(path.join(__dirname, 'static', 'index.html')))
 
 
 app.post('/person/:personId/skill/:skillId/', async (req, res) => {
