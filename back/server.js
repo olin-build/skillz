@@ -17,7 +17,12 @@ export const app = express()
 
 app.use(helmet())
 app.use(express.json())
-app.use(IpFilter(IP_WHITELIST, { mode: 'allow' }))
+app.use(IpFilter(IP_WHITELIST, {
+    allowedHeaders: 'X-Forwarded-For',
+    excluding: '/',
+    logLevel: 'deny',
+    mode: 'allow',
+}))
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
