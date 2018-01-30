@@ -7,11 +7,13 @@ import gql from 'graphql-tag'
 
 export const PersonSkillsTable = ({ data, editablePerson = null, onRowClick }) => {
     if (data.error) {
+        console.error(data.error.message)
         return (<div className="ui warning icon message">
             <i className="warning sign icon"></i>
             <div className="content">
                 <div className="header"> Server Error </div>
-                <p>{String(data.error)}</p>
+                <p>{String(data.error.message)}</p>
+                <p>If you are outside the Olin Network, turn on your VPN and try again.</p>
             </div>
         </div>)
     }
