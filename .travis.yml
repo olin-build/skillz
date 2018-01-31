@@ -1,3 +1,9 @@
 language: node_js
 node_js:
   - "9.3"
+cache:
+  directories:
+    - "front/node_modules"
+    - "back/node_modules"
+before_script:
+  - yarn install
