@@ -1,3 +1,5 @@
+dist: trusty  # necessary for postgres 10 workaround
+sudo: required
 language: node_js
 node_js:
   - "9.3"
@@ -6,6 +8,9 @@ cache:
     - "front/node_modules"
     - "back/node_modules"
 before_script:
+  - psql --version
+  - bash back/scripts/install-postgres-10.sh
+  - psql --version
   - yarn install
   - yarn db:init
   - yarn db:fixture
