@@ -1,0 +1,17 @@
+#!/bin/bash -eu
+
+# The top of this file is duplicated between multiple scripts in this directory.
+
+# Read the environment variable, with a default
+export DATABASE_URL=${DATABASE_URL:-postgres://skillz@localhost/skillz}
+
+# extract the user and database name from the database URL
+db_url_re=".*//(.+)@.*/(.+)"
+[[ "$DATABASE_URL" =~ $db_url_re ]]
+user=${BASH_REMATCH[1]}
+db=${BASH_REMATCH[2]}
+
+createuser $user
+createdb $db
+psql $db < ./config/schema.sql
+yarn db:migrate

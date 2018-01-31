@@ -8,14 +8,12 @@ Install PostgreSQL. On macOS: install Homebrew, then `brew install postgresql`.
 
 Set the environment variable `DATABASE_URL=postgres://skillz@localhost/skillz`.
 
-```bash
-createuser skillz
-createdb skillz
-psql skillz < config/schema.sql
-yarn db:migrate
-```
+Create the database, and add dummy data for development:
 
-For development, run `psql skillz < data/dev_data.sql` to seed the `person` table.
+```bash
+yarn db:init
+yarn db:fixtures
+```
 
 ## Configuration
 

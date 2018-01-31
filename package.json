@@ -5,6 +5,9 @@
   "author": "Oliver Steele <oliver.steele@olin.edu>",
   "license": "MIT",
   "scripts": {
+    "install": "(cd back && yarn) && (cd front && yarn)",
+    "db:init": "cd back && yarn db:init",
+    "db:fixture": "cd back && yarn db:fixture",
     "deploy": "yarn deploy:back && yarn deploy:front",
     "deploy:front": "cd front && yarn deploy",
     "deploy:back": "cd back && yarn deploy",
