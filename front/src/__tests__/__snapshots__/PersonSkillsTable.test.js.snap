@@ -42,7 +42,7 @@ exports[`PersonSkillsTable matches snapshot 1`] = `
           className="compact my-rating"
         >
           <i
-            className="\${size} empty star icon"
+            className="tiny empty star icon"
             style={
               Object {
                 "color": "transparent",
@@ -54,7 +54,7 @@ exports[`PersonSkillsTable matches snapshot 1`] = `
           className="compact my-rating"
         >
           <i
-            className="\${size} empty star icon"
+            className="tiny empty star icon"
             style={
               Object {
                 "color": "transparent",
@@ -70,7 +70,7 @@ exports[`PersonSkillsTable matches snapshot 1`] = `
           className="compact my-rating"
         >
           <i
-            className="\${size} empty star icon"
+            className="tiny empty star icon"
             style={
               Object {
                 "color": "transparent",
@@ -82,7 +82,7 @@ exports[`PersonSkillsTable matches snapshot 1`] = `
           className="compact my-rating"
         >
           <i
-            className="\${size} empty star icon"
+            className="tiny empty star icon"
             style={
               Object {
                 "color": "transparent",
