@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 
 module.exports = {
+  entry: './index.jsx',
   env: {
     API_SERVER_URL: 'http://127.0.0.1:5000/',
   },
