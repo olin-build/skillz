@@ -14,3 +14,4 @@ before_script:
   - yarn install
   - yarn db:init
   - yarn db:fixture
+  - yarn lint

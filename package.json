@@ -11,6 +11,7 @@
     "deploy": "yarn deploy:back && yarn deploy:front",
     "deploy:front": "cd front && yarn deploy",
     "deploy:back": "cd back && yarn deploy",
+    "lint": "(cd back && yarn lint) && (cd front && yarn lint)",
     "test": "jest"
   },
   "jest": {
