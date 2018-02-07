@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "install": "(cd back && yarn) && (cd front && yarn)",
+    "build:front": "cd front && yarn build",
     "db:init": "cd back && yarn db:init",
     "db:fixture": "cd back && yarn db:fixture",
     "deploy": "yarn deploy:back && yarn deploy:front",
