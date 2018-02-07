@@ -6,8 +6,8 @@ node_js:
 
 cache:
   directories:
-    - "front/node_modules"
-    - "back/node_modules"
+    - front/node_modules
+    - back/node_modules
 
 before_script:
   - psql --version
@@ -19,10 +19,14 @@ before_script:
   - yarn lint
 
 before_deploy:
-  - yarn global add netlify-cli
+  - mkdir -p ~/bin
+  - echo Created ~/bin
+  - wget https://github.com/netlify/netlifyctl/releases/download/v0.3.1/netlifyctl-linux-amd64-0.3.1.tar.gz -O /tmp/netlifyctl.tgz
+  - tar -xvf /tmp/netlifyctl.tgz -C ~/bin
+  - export PATH=~/bin:$PATH
   - yarn build:front
 
 deploy:
   provider: script
-  script: netlify deploy -s $NETLIFY_SITE_ID -t $NETLIFY_ACCESS_TOKEN -p ./front/dist
+  script: netlifyctl deploy -s $NETLIFY_SITE_ID -A $NETLIFY_ACCESS_TOKEN -b ./front/dist
   skip_cleanup: true
