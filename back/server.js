@@ -71,13 +71,13 @@ app.post('/person/:personId/skill/:skillId/', async (req, res) => {
 
 const start = async () => {
   try {
-    client.connect();
+    await client.connect();
   } catch (err) {
     console.error(`pg client connect: ${err.error}`);
     process.exit(1);
   }
-  console.log(`Connected to ${DATABASE_URL}`);
-  app.listen(PORT, () => console.log(`API server listening on port ${PORT}.`));
+  console.log(`Connected to ${DATABASE_URL.replace(/:[^\/]+?(?=@)/, '')}`);
+  await app.listen(PORT, () => console.log(`API server listening on port ${PORT}.`));
 };
 
 
