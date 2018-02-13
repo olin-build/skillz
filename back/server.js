@@ -1,8 +1,9 @@
+import path from 'path';
 import { Client } from 'pg';
 import { IpFilter } from 'express-ipfilter';
 import express from 'express';
 import helmet from 'helmet';
-import path from 'path';
+import morgan from 'morgan';
 import postgraphql from 'postgraphql';
 import { constructQuery } from './orm';
 
@@ -11,10 +12,9 @@ const DATABASE_URL = process.env.DATABASE_URL || 'postgres://skillz@localhost/sk
 const IP_WHITELIST = (process.env.IP_WHITELIST || '127.0.0.1').split(',');
 
 export const client = new Client({ connectionString: DATABASE_URL });
-
-
 export const app = express();
 
+app.use(morgan('combined'));
 app.use(helmet());
 app.use(express.json());
 app.use(IpFilter(IP_WHITELIST, {
