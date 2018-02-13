@@ -32,7 +32,7 @@ app.use(morgan('combined'));
 app.use(helmet());
 app.use(express.json());
 app.use(IpFilter(IP_WHITELIST, {
-  allowedHeaders: 'X-Forwarded-For',
+  allowedHeaders: ['X-Forwarded-For'],
   excluding: ['^/$'],
   logLevel: 'deny',
   mode: 'allow',
