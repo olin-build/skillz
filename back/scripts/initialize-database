@@ -11,6 +11,8 @@ db_url_re=".*//(.+)@.*/(.+)"
 user=${BASH_REMATCH[1]}
 db=${BASH_REMATCH[2]}
 
+dropdb $db --if-exists
+dropuser $user --if-exists
 createuser $user
 createdb $db
 psql $db < ./config/schema.sql
