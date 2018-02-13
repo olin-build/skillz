@@ -14,6 +14,20 @@ const IP_WHITELIST = (process.env.IP_WHITELIST || '127.0.0.1').split(',');
 export const client = new Client({ connectionString: DATABASE_URL });
 export const app = express();
 
+export const getRealAddress = (req) => {
+  const ip = req.headers['x-real-ip'] || req.headers['x-forwarded-for'];
+  if (ip) {
+    const m = ip.split(/,\s*/);
+    if (m) {
+      return m.pop();
+    }
+  }
+  return req.connection.remoteAddress;
+};
+
+
+morgan.token('remote-addr', getRealAddress);
+
 app.use(morgan('combined'));
 app.use(helmet());
 app.use(express.json());

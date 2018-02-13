@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { app, client } from './server';
+import { app, client, getRealAddress } from './server';
 
 beforeAll(() => client.connect());
 
@@ -25,5 +25,23 @@ describe('app', () => {
     await request(app).post('/person/1/skill/1')
       .send({ invalid_field: 3 })
       .expect(400);
+  });
+});
+
+describe(getRealAddress, () => {
+  test('reads x-real-ip', () => {
+    expect(getRealAddress({ headers: { 'x-real-ip': '8.8.8.8' } })).toBe('8.8.8.8');
+  });
+  test('reads x-forwarded-for', () => {
+    expect(getRealAddress({ headers: { 'x-forwarded-for': '8.8.8.8' } })).toBe('8.8.8.8');
+  });
+  test('returns the last value from a list of IPs', () => {
+    expect(getRealAddress({ headers: { 'x-forwarded-for': '4.4.4.4, 8.8.8.8' } })).toBe('8.8.8.8');
+  });
+  test('return connection address when no headers are present', () => {
+    expect(getRealAddress({ headers: {}, connection: { remoteAddress: '8.8.8.8' } })).toBe('8.8.8.8');
+  });
+  test('prefers header address over the connection address', () => {
+    expect(getRealAddress({ headers: { 'x-real-ip': '8.8.8.8' }, connection: { remoteAddress: '4.4.4.4' } })).toBe('8.8.8.8');
   });
 });
