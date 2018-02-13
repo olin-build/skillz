@@ -7,8 +7,7 @@
   "scripts": {
     "start": "babel-node server.js --presets env",
     "develop": "nodemon ./node_modules/.bin/babel-node server.js --presets env",
-    "deploy": "cd .. && git subtree push --prefix back heroku master",
-    "deploy:force": "cd .. && git push heroku `git subtree split --prefix back`:master --force",
+    "deploy": "cd .. && git push heroku `git subtree split --prefix back`:master --force",
     "format": "eslint --fix *.js",
     "lint": "eslint --cache *.js",
     "postgraphql": "postgraphql -c postgres://skillz@localhost/skillz --cors",
